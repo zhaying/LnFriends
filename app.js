@@ -15,16 +15,6 @@ var flash         = require('connect-flash');
 // Use environment variables
 dotenv.load();
 
-// BGN CIVIC AUTH
-const civicSip = require('civic-sip-api');
-
-// Step 4: Initialize instance passing your appId and secret.
-const civicClient = civicSip.newClient({
-  appId: process.env.CIVIC_APP_ID,
-  prvKey: process.env.CIVIC_PRV_KEY,
-  appSecret: process.env.CIVIC_APP_SECRET,
-});
-// END CIVIC AUTH
 
 // Load passport configs
 require('./configs/passport')(passport); // pass passport for configuration

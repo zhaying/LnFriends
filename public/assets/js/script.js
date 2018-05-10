@@ -1,7 +1,24 @@
 // Instantiate instance of civic.sip
 var civicSip = new civic.sip({ appId: 'ryQVAxWAM' });
 var sendAuthCode = function sendAuthCode(jwtToken) {
+  //Testing
   console.log(jwtToken);
+ //Post token for server processing
+ let obj = {aToken: jwtToken};
+
+  $.ajax({
+    type: "POST",
+    url: "/api/civic",
+    data: obj,
+    success: function(data, textStatus, jqXHR) {
+      if (typeof data.redirect == 'string') {
+        window.location = data.redirect
+      }
+
+    },
+    dataType: "json"
+  });
+
 };
 // Start scope request.
 var button = document.querySelector('#signupButton');

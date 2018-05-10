@@ -1,4 +1,8 @@
-// app/routes.js
+// configs/routes.js
+
+//Load Modules
+var civicService = require("../services/civicService.js");
+
 module.exports = function(app,passport) {
 
     // =====================================
@@ -24,6 +28,17 @@ module.exports = function(app,passport) {
     // app.post('/login', do all our passport stuff here);
 
     // =====================================
+    // PROCESS TOKEN =======================
+    // =====================================
+    app.post('/api/civic', function(req, res) {
+      var jwtToken = req.body.aToken;
+      console.log("FILE:routes.js VAR:jwtToken FUN: app.post\n",jwtToken)
+      civicService.processToken(jwtToken);
+        res.send({redirect: '/profile'});
+
+    });
+
+    // =====================================
     // SIGNUP ==============================
     // =====================================
     // show the signup form
@@ -43,10 +58,14 @@ module.exports = function(app,passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile', {
-            user : req.user // get the user out of session and pass to template
-        });
+    // app.get('/profile', isLoggedIn, function(req, res) {
+    //     // res.render('profile', {
+    //     //     user : req.user // get the user out of session and pass to template
+    //     // });
+    //     res.render('profile'); // load the index file
+    // });
+    app.get('/profile', function(req, res) {
+        res.render('profile'); // load the index file
     });
 
     // =====================================
