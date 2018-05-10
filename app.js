@@ -1,8 +1,11 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-
+var dotenv = require('dotenv');
+dotenv.load();
 var PORT = process.env.PORT || 3000;
-var HOSTNAME =  'lnfriends-dev.colada.io';
+var THE_HOSTNAME =  process.env.THE_HOSTNAME || "localhost";
+
+
 var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
@@ -25,6 +28,6 @@ var routes = require("./controllers/siteController.js");
 
 app.use(routes);
 
-app.listen(PORT, HOSTNAME, function() {
-  console.log("App now listening at " + HOSTNAME + ":" + PORT);
+app.listen(PORT, THE_HOSTNAME, function() {
+  console.log("App now listening at http://" + THE_HOSTNAME + ":" + PORT);
 });
