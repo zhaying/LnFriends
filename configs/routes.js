@@ -72,7 +72,7 @@ module.exports = function(app,passport) {
     // LOGOUT ==============================
     // =====================================
     app.get('/logout', function(req, res) {
-        req.logout();
+        //req.logout();
         res.redirect('/');
     });
 };
