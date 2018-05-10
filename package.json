@@ -1,6 +1,9 @@
 {
   "name": "lnfriends",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.9.4"
+  }
   "description": "A school project app",
   "main": "app.js",
   "scripts": {
