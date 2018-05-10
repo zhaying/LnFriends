@@ -13,7 +13,10 @@ module.exports = {
     civicClient.exchangeCode(jwtToken)
     .then((userData) => {
       // store user data and userId as appropriate
-      console.log('userData = ', JSON.stringify(userData, null, 4));
+      var theUserData = JSON.stringify(userData, null, 4);
+      var userId = JSON.stringify(userData.userId, null, 4);
+      console.log('userData = ', theUserData);
+      console.log('userId = ', userId);
     }).catch((error) => {
       console.log(error);
     });

@@ -34,7 +34,7 @@ module.exports = function(app,passport) {
       var jwtToken = req.body.aToken;
       console.log("FILE:routes.js VAR:jwtToken FUN: app.post\n",jwtToken)
       civicService.processToken(jwtToken);
-        res.send({redirect: '/profile'});
+        res.send({redirect: '/dashboard'});
 
     });
 
@@ -64,8 +64,8 @@ module.exports = function(app,passport) {
     //     // });
     //     res.render('profile'); // load the index file
     // });
-    app.get('/profile', function(req, res) {
-        res.render('profile'); // load the index file
+    app.get('/dashboard', function(req, res) {
+        res.render('dashboard'); // load the index file
     });
 
     // =====================================
