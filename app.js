@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var dotenv = require('dotenv');
 dotenv.load();
 var PORT = process.env.PORT || 3000;
-var THE_HOSTNAME =  process.env.THE_HOSTNAME || "localhost";
+var THE_HOSTNAME =  process.env.THE_HOSTNAME || "0.0.0.0";
 
 
 var app = express();
