@@ -1,5 +1,5 @@
-NODE_ENV="replaceME"
-THE_HOSTNAME="replaceME"
+NODE_ENV="local"
+THE_HOSTNAME="lnfriends-dev.colada.io"
 CIVIC_APP_ID="replaceME"
 CIVIC_PRV_KEY="replaceME"
 CIVIC_APP_SECRET="replaceME"

@@ -1,0 +1,36 @@
+body {
+    background-image: url("white.jpeg");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+}
+
+h1 {
+	color: black;
+	font-size: 46px;
+}
+
+p {
+	font-size: 24px;
+}
+a {
+	font-size: 20px;
+}
+
+.logo {
+	position: absolute;
+}
+
+#signupButton{
+	margin-top: 100px; 
+}
+
+#signupButtonNoAuth {
+	margin-top: 100px;
+}
+
+.hide-when-mobile {
+	padding: 1.375rem .75rem;
+    font-size: 30px;
+    line-height: 1;
+}
