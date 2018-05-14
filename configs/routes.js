@@ -86,4 +86,26 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
+
+
+
 }
+
+
+///Load CoinsService API Object 
+var coinDataService = require("../services/coinDataService.js");
+
+    // =====================================
+    // GET Request for Coin Market Cap ====
+    // =====================================
+    app.get('/', function(req, res) {
+        
+    var coinRequest = JSON.parse(coinMarket.responseText);
+
+    )};
+        res.render('index'); // load the index file
+    
+
+
+
+
