@@ -2,6 +2,9 @@
 
 //Load Modules
 var civicService = require("../services/civicService.js");
+///Load CoinsService API Object 
+var coinDataService = require("../services/coinDataService.js");
+var request = require('request');
 
 module.exports = function(app,passport) {
 
@@ -75,7 +78,22 @@ module.exports = function(app,passport) {
         //req.logout();
         res.redirect('/');
     });
-};
+
+    app.get('/api/coindata', function(req, res) {
+        var $ 
+      var price = request('https://api.coinmarketcap.com/v2/ticker/2616/?convert=SPD');
+    req.pipe(price);
+    price.pipe(res);
+
+     // var price = coinDataService.getData();
+    //  console.log("routes price", price);
+
+//      res.send(price);
+
+    });
+
+
+}; // end Module export 
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
@@ -92,18 +110,17 @@ function isLoggedIn(req, res, next) {
 }
 
 
-///Load CoinsService API Object 
-var coinDataService = require("../services/coinDataService.js");
 
-    // =====================================
-    // GET Request for Coin Market Cap ====
-    // =====================================
-    app.get('/', function(req, res) {
+
+    // // =====================================
+    // // GET Request for Coin Market Cap ====
+    // // =====================================
+    // app.get('/api/coindata', function(req, res) {
         
-    var coinRequest = JSON.parse(coinMarket.responseText);
+    // var coinRequest = JSON.parse(coinMarket.responseText);
 
-    )};
-        res.render('index'); // load the index file
+    // )};
+    //     res.render('index'); // load the index file
     
 
 

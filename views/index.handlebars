@@ -6,13 +6,12 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <link rel="stylesheet" href="https://hosted-sip.civic.com/css/civic-modal.min.css">
 
-<script src="https://hosted-sip.civic.com/js/civic.sip.min.js"></script>
 
-<script src="assets/js/script.js"></script>
+
+
     <style>
         body        { padding-top:80px; }
     </style>
-</head>
 <body>
 <div class="container">
 
@@ -23,10 +22,10 @@
 
         <!-- <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
         <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a> -->
-        <button id="signupButton" class="civic-button-a medium" type="button">
+        <button id="signupButton" class="civic-button-a medium" type="button" onclick='signupButton'>
           <span>Log in with Civic</span>
         </button>
-        <button id="signupButtonNoAuth" class="civic-button-a medium" type="button" onclick=''>
+        <button id="signupButtonNoAuth" class="civic-button-a medium" type="button" onclick='signupButtonNoAuth'>
           <span>Login No auth</span>
         </button>
         <br /><br /><br /><br /><br />
@@ -35,6 +34,6 @@
     </div>
 
 </div>
-<script src="assets/js/script.js"></script>
+<script src="assets/js/loginScript.js"></script>
 </body>
 </html>
