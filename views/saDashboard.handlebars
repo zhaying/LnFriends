@@ -1,0 +1,44 @@
+<!-- views/profile -->
+<!doctype html>
+<html>
+<head>
+	<title>suDashboard</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> SA Dashboard Home</h1>
+		<a href="/" class="btn btn-light btn-sm">Home</a>
+		<a href="/logout" class="btn btn-light btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+		<div class="col-sm-6">
+
+			<!-- websocket test -->
+			<div id="coin_data_results" class="card">
+				<h3><span class="fa fa-user"></span> Data</h3>
+				<div id="tableCoinData" class="mb-5">
+					<button id="btnGetCMC" class="btn btn-secondary" >Get CMC listings</button>
+				</div>
+				<input id="coinSymbol" type="text" placeholder="Enter coin symbol" />
+				<button id="btnSendCoin"  class="btn btn-primary">Refresh Price</button>
+				<div id="output"></div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- <script src="assets/js/saDashboardScript.js"></script> -->
+</body>
+</html>

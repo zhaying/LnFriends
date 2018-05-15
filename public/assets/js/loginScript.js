@@ -75,3 +75,4 @@ civicSip.on('read', function (event) {
     console.log('   Error type = ' + error.type);
     console.log('   Error message = ' + error.message);
  });
+
