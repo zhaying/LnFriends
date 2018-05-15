@@ -31,40 +31,17 @@ var request = require('request');
 
 module.exports = {
 	getData: function () {
-		var x = request('https://api.coinmarketcap.com/v2/ticker/2616/?convert=SPD')
-    req.pipe(x)
-    x.pipe(resp)
-	// request('https://api.coinmarketcap.com/v2/ticker/2616/?convert=SPD', function (error, response, body) {
-	// 		if (error) {
-	// 			console.log(error);
-	// 			response.error(error);
-	// 		}
+		var x = request('https://api.coinmarketcap.com/v2/ticker/2616/?convert=SPD');
+    req.pipe(x);
+    x.pipe(resp);
 
-	// 		//var price = JSON.parse(body);
-	// 		//Display
-	// 	    console.log("price:",body);
-	// 	   // return body;
-	// 	   return body;
-    // let output = '';
-    // for (let price of price) {
-    //     output += `
-    //     <li>
-    //         <h3>${price.title}</h3>
-    //     </li>
-    //     `;  
-    // }
 
-		  //console.log('error:', error); // Print the error if one occurred
-		  //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-		  //console.log('body:', body); // Print the HTML for the Google homepage.
-		});
-		
 	},
-  
+
 
 };
 
-//////Option 2 for solution Sunday May 13 
+//////Option 2 for solution Sunday May 13
 
 // var btn = document.getElementbyId('#btn') {
 
@@ -105,7 +82,7 @@ module.exports = {
 /*
 
 function renderHTML(data) {
-	
+
 }
 
 

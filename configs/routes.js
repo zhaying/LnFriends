@@ -2,9 +2,10 @@
 
 //Load Modules
 var civicService = require("../services/civicService.js");
-///Load CoinsService API Object 
+///Load CoinsService API Object
 var coinDataService = require("../services/coinDataService.js");
 var request = require('request');
+var rp = require('request-promise');
 
 module.exports = function(app,passport) {
 
@@ -79,11 +80,34 @@ module.exports = function(app,passport) {
         res.redirect('/');
     });
 
+
     app.get('/api/coindata', function(req, res) {
-        var $ 
-      var price = request('https://api.coinmarketcap.com/v2/ticker/2616/?convert=SPD');
-    req.pipe(price);
-    price.pipe(res);
+        var coinSymbol = "SPD";
+        var coinUrl = "https://api.coinmarketcap.com/v2/ticker/2616/?convert=" +coinSymbol;
+        //console.log(coinUrl);
+        // var mydata = request(coinUrl);
+        // var price = {"thedata": mydata };
+        rp(coinUrl)
+        .then(function (theStuff) {
+          // Process html...
+
+          var firstKey = theStuff;
+          var myData = Object.keys(firstKey)[0];
+          console.log("myData",myData);
+          var myId = firstKey[Object.keys(firstKey)[0]].price;
+console.log("myId",myId);
+          //console.log("data:", obj.toJSON());
+          res.send(myId);
+        })
+        .catch(function (err) {
+          // Crawling failed...
+          console.log(err);
+        });
+
+
+      //var data = price.data;
+    // req.pipe(price);
+    // price.pipe(result);
 
      // var price = coinDataService.getData();
     //  console.log("routes price", price);
@@ -93,7 +117,7 @@ module.exports = function(app,passport) {
     });
 
 
-}; // end Module export 
+}; // end Module export
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
@@ -116,13 +140,8 @@ function isLoggedIn(req, res, next) {
     // // GET Request for Coin Market Cap ====
     // // =====================================
     // app.get('/api/coindata', function(req, res) {
-        
+
     // var coinRequest = JSON.parse(coinMarket.responseText);
 
     // )};
     //     res.render('index'); // load the index file
-    
-
-
-
-
