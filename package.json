@@ -34,6 +34,9 @@
     "nodemon": "^1.17.4",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "socket.io": "^2.1.0",
+    "socket.mvc": "^0.2.0"
   }
 }
