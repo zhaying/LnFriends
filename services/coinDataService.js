@@ -6,6 +6,27 @@ var socketMVC = require('socket.mvc');
 
 
 module.exports = {
+	getListings: function () {
+		coinUrl = 'https://api.coinmarketcap.com/v2/listings/';
+		console.log("coinUrl:",coinUrl);
+		var options = {
+			uri: coinUrl,
+			headers: { 'User-Agent': 'Request-Promise'},
+			json: true // Automatically parses the JSON string in the response
+		};
+
+		rp(options)
+				.then(function (allActiveCoins) {
+						console.log('allActiveCoins', allActiveCoins);
+						var ladaListingData = {'data': allActiveCoins.data};
+						console.log('ladaListingData:',ladaListingData);
+				})
+				.catch(function (err) {
+						// API call failed...
+						console.log(err);
+				});
+
+	}, // end getListings
 	getData: function (req,res) {
 		var coinSymbol = req.body.coinSymbol;
 		var coinID = req.body.coinID;
@@ -43,7 +64,10 @@ module.exports = {
 		rp(options)
 				.then(function (priceData) {
 						console.log('priceData', priceData);
-						var ladaData = {'price': priceData.data.quotes.USD.price};
+						var ladaData = {
+							'symbol': priceData.data.symbol,
+							 'price': priceData.data.quotes.USD.price
+						};
 						//res.send(ladaData);
 						/*Login logic*/
 						socketMVC.emit('coinResponse',ladaData);
