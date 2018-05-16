@@ -1,6 +1,5 @@
 //APIs to connect to:
 var request = require('request');
-<<<<<<< HEAD
 
 module.exports = {
 	getData: function () {
@@ -143,7 +142,7 @@ module.exports = {
 						console.log(err);
 				});
 	} // end getData
->>>>>>> 2f136382f4af4800e14602c4f26f3d3c36f939ca
+
 };
 
 /* coinmarketcap *****

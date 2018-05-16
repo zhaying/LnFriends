@@ -4,11 +4,10 @@
 var civicService = require("../services/civicService.js");
 ///Load CoinsService API Object
 var coinDataService = require("../services/coinDataService.js");
-<<<<<<< HEAD
+
 var request = require('request');
 var rp = require('request-promise');
-=======
->>>>>>> 2f136382f4af4800e14602c4f26f3d3c36f939ca
+
 
 module.exports = function(app,passport) {
 
