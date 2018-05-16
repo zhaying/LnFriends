@@ -5,6 +5,10 @@ var civicService = require("../services/civicService.js");
 ///Load CoinsService API Object
 var coinDataService = require("../services/coinDataService.js");
 
+var request = require('request');
+var rp = require('request-promise');
+
+
 module.exports = function(app,passport) {
 
     // =====================================
@@ -13,6 +17,7 @@ module.exports = function(app,passport) {
     app.get('/', function(req, res) {
         res.render('login'); // load the index file
     });
+
 
     // =====================================
     // UI -- LOGIN
@@ -25,6 +30,8 @@ module.exports = function(app,passport) {
         var flashLoginMessage = "test";
         res.render('login', { message: flashLoginMessage });
     });
+
+
 
     // =====================================
     // UI -- DASHBOARDS
@@ -41,6 +48,8 @@ module.exports = function(app,passport) {
     app.get('/sa', function(req, res) {
         res.render('saDashboard'); // load the index file
     });
+
+
     // =====================================
     // UI -- LOGOUT
     // =====================================
@@ -50,7 +59,7 @@ module.exports = function(app,passport) {
     });
 
     // =====================================
-    // API -- PROCESS TOKEN
+    // PROCESS TOKEN =======================
     // =====================================
     app.post('/api/civic', function(req, res) {
       var jwtToken = req.body.aToken;
@@ -63,26 +72,81 @@ module.exports = function(app,passport) {
     // =====================================
     // API -- COIN DATA
     // =====================================
+    //Coin Data
     app.get('/api/coindata', function(req, res) {
+        var coinSymbol = "SPD";
+        var coinUrl = "https://api.coinmarketcap.com/v2/ticker/2616/?convert=" +coinSymbol;
+        //console.log(coinUrl);
+        // var mydata = request(coinUrl);
+        // var price = {"thedata": mydata };
+        rp(coinUrl)
+        .then(function (theStuff) {
+          // Process html...
 
-    });
+          var firstKey = theStuff;
+          var myData = Object.keys(firstKey)[0];
+          console.log("myData",myData);
+          var myId = firstKey[Object.keys(firstKey)[0]].price;
+          console.log("myId",myId);
+          //console.log("data:", obj.toJSON());
+          res.send(myId);
+        })
+        .catch(function (err) {
+          // Crawling failed...
+          console.log(err);
+        });
+
+    }); //end get api coindata
 
     app.post('/api/coindata', function(req, res) {
 
       coinDataService.getData(req,res);
 
+    }); //end post api coindata
+
+    //////JP----* TheBSODPool *****
+    app.get('/api/cointotal', function(req, res) {
+        var totalSymbol = "SPD";
+        var totalnUrl = "http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" +totalSymbol;
+        //console.log(coinUrl);
+        // var mydata = request(coinUrl);
+        // var price = {"thedata": mydata };
+        rp(totalUrl)
+        .then(function (theStuff) {
+          // Process html...
+
+          var firstKey = theStuff;
+          var myData = Object.keys(firstKey)[0];
+          console.log("myData",myData);
+          var myId = firstKey[Object.keys(firstKey)[0]].price;
+    console.log("myId",myId);
+          //console.log("data:", obj.toJSON());
+          res.send(myId);
+        })
+        .catch(function (err) {
+          // Crawling failed...
+          console.log(err);
+        });
+
+    }); //end get api cointotal
+
+    app.post('/api/cointotal', function(req, res) {
+      coinTotal.getData(req,res);
+
     });
 
+    // =====================================
+    // MISC -- OTHER STUFF
+    // =====================================
+      // route middleware to make sure a user is logged in
+      function isLoggedIn(req, res, next) {
+
+          // if user is authenticated in the session, carry on
+          if (req.isAuthenticated())
+              return next();
+
+          // if they aren't redirect them to the home page
+          res.redirect('/');
+
+      } //end isLoggedIn
 }; // end Module export
-
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-
-} //end isLoggedIn
