@@ -44,13 +44,13 @@ module.exports = function(app,passport) {
     // SIGNUP ==============================
     // =====================================
     // show the signup form
-    app.get('/signup', function(req, res) {
+   // app.get('/signup', function(req, res) {
 
         // render the page and pass in any flash data if it exists
         //var flashMessage = req.flash('signupMessage');
-        var flashSignupMessage = "test";
-        res.render('signup', { message: flashSignupMessage });
-    });
+       // var flashSignupMessage = "test";
+       // res.render('signup', { message: flashSignupMessage });
+    //});
 
     // process the signup form
     // app.post('/signup', do all our passport stuff here);
@@ -69,15 +69,15 @@ module.exports = function(app,passport) {
     app.get('/dashboard', function(req, res) {
         res.render('dashboard'); // load the index file
     });
-    app.get('/saDashboard', function(req, res) {
-        res.render('saDashboard'); // load the index file
+    app.get('/admin', function(req, res) {
+        res.render('admin'); // load the index file
     });
     // =====================================
     // LOGOUT ==============================
     // =====================================
     app.get('/logout', function(req, res) {
         //req.logout();
-        res.redirect('/');
+        res.redirect('/login');
     });
 
     app.get('/api/coindata', function(req, res) {
