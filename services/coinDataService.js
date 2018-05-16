@@ -1,70 +1,5 @@
 //APIs to connect to:
 var request = require('request');
-
-module.exports = {
-	getData: function () {
-		var x = request('https://api.coinmarketcap.com/v2/ticker/2616/?convert=SPD');
-    req.pipe(x);
-    x.pipe(resp);
-
-
-	},
-
-
-};
-
-//////Option 2 for solution Sunday May 13
-
-// var btn = document.getElementbyId('#btn') {
-
-// function getData (method, url) {
-// 	return new Promise(function(resolve, reject) {
-// 		var xhr = new XMLHttpRequest();
-// 		xhr.open(method, url);
-// 		xhr.onload = function () {
-// 			if (this.status >= 200 && this.status < 300) {
-// 				resolve(xhr.response);
-// 			} else {
-// 				reject ({
-// 					status: this.status,
-// 					statusText: xhr.statusText
-// 				});
-// 			}
-// 		};
-// 		xhr.onerror = function () {
-// 			reject ({
-// 				status: this.status,
-// 				statusText: xhr.statusText
-// 			});
-// 		};
-// 		xhr.send();
-// 	});
-// }
-
-
-
-
-// }
-
-
-
-
-
-
-/*
-
-function renderHTML(data) {
-
-}
-
-
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
-       document.getElementById("demo").innerHTML = xhttp.responseText;
-    }
-=======
 var rp = require('request-promise');
 var socketMVC = require('socket.mvc');
 
@@ -142,7 +77,6 @@ module.exports = {
 						console.log(err);
 				});
 	} // end getData
-
 };
 
 /* coinmarketcap *****

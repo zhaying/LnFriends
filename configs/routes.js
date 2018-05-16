@@ -84,9 +84,8 @@ module.exports = function(app,passport) {
         res.redirect('/');
     });
 
-
+//Coin Data
     app.get('/api/coindata', function(req, res) {
-<<<<<<< HEAD
         var coinSymbol = "SPD";
         var coinUrl = "https://api.coinmarketcap.com/v2/ticker/2616/?convert=" +coinSymbol;
         //console.log(coinUrl);
@@ -113,8 +112,6 @@ console.log("myId",myId);
       //var data = price.data;
     // req.pipe(price);
     // price.pipe(result);
-=======
->>>>>>> 2f136382f4af4800e14602c4f26f3d3c36f939ca
 
 
 
@@ -141,6 +138,63 @@ function isLoggedIn(req, res, next) {
 
 
 }
+
+//////JP----* TheBSODPool *****
+app.get('/api/cointotal', function(req, res) {
+    var totalSymbol = "SPD";
+    var totalnUrl = "http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" +totalSymbol;
+    //console.log(coinUrl);
+    // var mydata = request(coinUrl);
+    // var price = {"thedata": mydata };
+    rp(totalUrl)
+    .then(function (theStuff) {
+      // Process html...
+
+      var firstKey = theStuff;
+      var myData = Object.keys(firstKey)[0];
+      console.log("myData",myData);
+      var myId = firstKey[Object.keys(firstKey)[0]].price;
+console.log("myId",myId);
+      //console.log("data:", obj.toJSON());
+      res.send(myId);
+    })
+    .catch(function (err) {
+      // Crawling failed...
+      console.log(err);
+    });
+
+});
+app.post('/api/cointotal', function(req, res) {
+  coinTotal.getData(req,res);
+
+});
+
+
+
+}; // end Module export
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+// if user is authenticated in the session, carry on
+if (req.isAuthenticated())
+    return next();
+
+// if they aren't redirect them to the home page
+res.redirect('/');
+
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
