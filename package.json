@@ -35,6 +35,12 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "request": "^2.85.0",
+<<<<<<< HEAD
     "request-promise": "^4.2.2"
+=======
+    "request-promise": "^4.2.2",
+    "socket.io": "^2.1.0",
+    "socket.mvc": "^0.2.0"
+>>>>>>> 2f136382f4af4800e14602c4f26f3d3c36f939ca
   }
 }

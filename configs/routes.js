@@ -4,8 +4,11 @@
 var civicService = require("../services/civicService.js");
 ///Load CoinsService API Object
 var coinDataService = require("../services/coinDataService.js");
+<<<<<<< HEAD
 var request = require('request');
 var rp = require('request-promise');
+=======
+>>>>>>> 2f136382f4af4800e14602c4f26f3d3c36f939ca
 
 module.exports = function(app,passport) {
 
@@ -71,7 +74,9 @@ module.exports = function(app,passport) {
     app.get('/dashboard', function(req, res) {
         res.render('dashboard'); // load the index file
     });
-
+    app.get('/saDashboard', function(req, res) {
+        res.render('saDashboard'); // load the index file
+    });
     // =====================================
     // LOGOUT ==============================
     // =====================================
@@ -82,6 +87,7 @@ module.exports = function(app,passport) {
 
 
     app.get('/api/coindata', function(req, res) {
+<<<<<<< HEAD
         var coinSymbol = "SPD";
         var coinUrl = "https://api.coinmarketcap.com/v2/ticker/2616/?convert=" +coinSymbol;
         //console.log(coinUrl);
@@ -108,13 +114,17 @@ console.log("myId",myId);
       //var data = price.data;
     // req.pipe(price);
     // price.pipe(result);
+=======
+>>>>>>> 2f136382f4af4800e14602c4f26f3d3c36f939ca
 
-     // var price = coinDataService.getData();
-    //  console.log("routes price", price);
 
-//      res.send(price);
 
     });
+    app.post('/api/coindata', function(req, res) {
+      coinDataService.getData(req,res);
+
+    });
+
 
 
 }; // end Module export
