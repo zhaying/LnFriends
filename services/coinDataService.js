@@ -63,17 +63,15 @@ module.exports = {
         rp(options)
             .then(function (currenciesData) {
                 console.log('currenciesData:', currenciesData);
-
-                {
+                var currencyData = {
+                    'symbol': priceData.data.symbol,
+                    'price': priceData.data.quotes.USD.price
+                };
+								currencyData = {
                     "id": 2616,
                     "name": "Stipend",
                     "symbol": "SPD",
                     "website_slug": "stipend"
-                },
-
-                var currencyData = {
-                    'symbol': priceData.data.symbol,
-                    'price': priceData.data.quotes.USD.price
                 };
                 //res.send(ladaData);
                 /*Login logic*/

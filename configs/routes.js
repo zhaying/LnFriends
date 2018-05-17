@@ -7,7 +7,7 @@ var coinDataService = require("../services/coinDataService.js");
 
 var request = require('request');
 var rp = require('request-promise');
-
+var db            = require('../models');
 
 module.exports = function(app,passport) {
 
@@ -144,7 +144,27 @@ module.exports = function(app,passport) {
       coinTotal.getData(req,res);
 
     });
+    // =====================================
+    // DB -- CRUD
+    // =====================================
+    app.get('/api/currencies/', function(req,res){
+      db.currencies.findAll({}).then( function(result) {
+        console.log(result);
+        res.json(result);
+      });
 
+    });
+    app.post('/api/currencies/new/', function(req, res){
+      db.currencies.create({
+        currencies_id: '2616',
+        name:"Stipend",
+        symbol: 'SPD',
+      }).then(function(result){
+        console.log(result);
+        res.json(result);
+      });
+
+    });
     // =====================================
     // MISC -- OTHER STUFF
     // =====================================

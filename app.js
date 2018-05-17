@@ -2,8 +2,8 @@
 
 // Get all modules
 var express       = require("express");
-var path = require('path');
-var socketMVC = require('socket.mvc');
+var path          = require('path');
+var socketMVC     = require('socket.mvc');
 var cookieParser  = require('cookie-parser');
 var bodyParser    = require("body-parser");
 var session       = require('express-session');
@@ -12,12 +12,13 @@ var exphbs        = require("express-handlebars");
 var morgan        = require('morgan');
 var passport      = require('passport');
 var flash         = require('connect-flash');
+var db            = require('./models');
 
 // Get all custom modules
 
 // Use environment variables
 dotenv.load();
-
+//dotenv.config();
 
 // Load passport configs
 require('./configs/passport')(passport); // pass passport for configuration
@@ -60,14 +61,16 @@ app.use(passport.session()); // persistent login sessions
 var routes = require("./configs/routes.js")(app,passport);
 //app.use(routes);
 app.use(flash()); // use connect-flash for flash messages stored in session
-var server = app.listen(PORT, THE_HOSTNAME, function() {
-  console.log("App now listening at http://" + THE_HOSTNAME + ":" + PORT);
-});
-//Set socket.io configuration here
-var io = require('socket.io').listen(server);
-io.sockets.on('connection', function (socket) {
-    socketMVC.init(io, socket, {
-        debug: true,
-        filePath: ['./configs/socket.js']
-    });
+db.sequelize.sync().then(function(){
+  var server = app.listen(PORT, THE_HOSTNAME, function() {
+    console.log("App now listening at http://" + THE_HOSTNAME + ":" + PORT);
+  });
+  //Set socket.io configuration here
+  var io = require('socket.io').listen(server);
+  io.sockets.on('connection', function (socket) {
+      socketMVC.init(io, socket, {
+          debug: true,
+          filePath: ['./configs/socket.js']
+      });
+  });
 });
