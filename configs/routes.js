@@ -28,7 +28,7 @@ module.exports = function(app,passport) {
         // render the page and pass in any flash data if it exists
         //var flashMessage = req.flash('loginMessage');
         var flashLoginMessage = "test";
-        res.render('login', { message: flashLoginMessage });
+        res.render('login', {message: 'flashLoginMessage', layout:'login' });
     });
 
 
@@ -41,8 +41,16 @@ module.exports = function(app,passport) {
         res.render('dashboard'); // load the index file
     });
 
-    app.get('/admin', function(req, res) {
-        res.render('admin'); // load the index file
+    app.get('/wallet', function(req, res) {
+        res.render('wallet'); // load the index file
+    });
+
+    app.get('/investors', function(req, res) {
+        res.render('investors'); // load the index file
+    });
+
+    app.get('/miningPool', function(req, res) {
+        res.render('miningPool'); // load the index file
     });
 
     app.get('/sa', function(req, res) {
