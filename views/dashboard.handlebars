@@ -1,7 +1,8 @@
-<!-- views/profile -->
+<!-- views/dashboard -->
 <!doctype html>
 <html>
 <head>
+<<<<<<< HEAD
     <title>LnFriends App</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link href="pricing.css" rel="stylesheet">
@@ -26,9 +27,54 @@
     <div class="text-center">
 
         <h1><span class="fa fa-lock"></span> CoinLada</h1>
+=======
+	<title>LnFriends App</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link href="pricing.css" rel="stylesheet">
+	<link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+</head>
+<body>
+<header id="masthead">
+   <div class="container">
+     <a href="/dashboard" id="logo">CoinLada</a>
+     <nav>
+       <a href="/dashboard">Dashboard</a>
+       <a href="/admin">Admin Console</a>
+       <a href="/login">Logout</a>
+     </nav>
+   </div>
+ </header>
+
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> Local</h3>
+
+					<p>
+						<strong>id</strong>: user._id<br>
+					</p>
+
+
+					${template}
+
+				<button id="btnTest" >TEST API Button</button>
+			</div>
+		</div>
+>>>>>>> 5ba8337dc92ea2ce38a8de979bad9e5810a8783e
 
         <p>Dashboard</p>
     </div>
 
+<<<<<<< HEAD
     </body>
+=======
+</div>
+<script src="assets/js/dashboardScript.js"></script>
+</body>
+>>>>>>> 5ba8337dc92ea2ce38a8de979bad9e5810a8783e
 </html>

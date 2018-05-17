@@ -2,18 +2,25 @@
 
 //Load Modules
 var civicService = require("../services/civicService.js");
+///Load CoinsService API Object
+var coinDataService = require("../services/coinDataService.js");
+
+var request = require('request');
+var rp = require('request-promise');
+
 
 module.exports = function(app,passport) {
 
     // =====================================
-    // HOME PAGE (with login links) ========
+    // UI -- HOME PAGE (with login links)
     // =====================================
     app.get('/', function(req, res) {
-        res.render('index'); // load the index file
+        res.render('login'); // load the index file
     });
 
+
     // =====================================
-    // LOGIN ===============================
+    // UI -- LOGIN
     // =====================================
     // show the login form
     app.get('/login', function(req, res) {
@@ -24,8 +31,32 @@ module.exports = function(app,passport) {
         res.render('login', { message: flashLoginMessage });
     });
 
-    // process the login form
-    // app.post('/login', do all our passport stuff here);
+
+
+    // =====================================
+    // UI -- DASHBOARDS
+    // =====================================
+
+    app.get('/dashboard', function(req, res) {
+        res.render('dashboard'); // load the index file
+    });
+
+    app.get('/admin', function(req, res) {
+        res.render('admin'); // load the index file
+    });
+
+    app.get('/sa', function(req, res) {
+        res.render('saDashboard'); // load the index file
+    });
+
+
+    // =====================================
+    // UI -- LOGOUT
+    // =====================================
+    app.get('/logout', function(req, res) {
+        //req.logout();
+        res.redirect('/login');
+    });
 
     // =====================================
     // PROCESS TOKEN =======================
@@ -39,51 +70,83 @@ module.exports = function(app,passport) {
     });
 
     // =====================================
-    // SIGNUP ==============================
+    // API -- COIN DATA
     // =====================================
-    // show the signup form
-    app.get('/signup', function(req, res) {
+    //Coin Data
+    app.get('/api/coindata', function(req, res) {
+        var coinSymbol = "SPD";
+        var coinUrl = "https://api.coinmarketcap.com/v2/ticker/2616/?convert=" +coinSymbol;
+        //console.log(coinUrl);
+        // var mydata = request(coinUrl);
+        // var price = {"thedata": mydata };
+        rp(coinUrl)
+        .then(function (theStuff) {
+          // Process html...
 
-        // render the page and pass in any flash data if it exists
-        //var flashMessage = req.flash('signupMessage');
-        var flashSignupMessage = "test";
-        res.render('signup', { message: flashSignupMessage });
+          var firstKey = theStuff;
+          var myData = Object.keys(firstKey)[0];
+          console.log("myData",myData);
+          var myId = firstKey[Object.keys(firstKey)[0]].price;
+          console.log("myId",myId);
+          //console.log("data:", obj.toJSON());
+          res.send(myId);
+        })
+        .catch(function (err) {
+          // Crawling failed...
+          console.log(err);
+        });
+
+    }); //end get api coindata
+
+    app.post('/api/coindata', function(req, res) {
+
+      coinDataService.getData(req,res);
+
+    }); //end post api coindata
+
+    //////JP----* TheBSODPool *****
+    app.get('/api/cointotal', function(req, res) {
+        var totalSymbol = "SPD";
+        var totalnUrl = "http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" +totalSymbol;
+        //console.log(coinUrl);
+        // var mydata = request(coinUrl);
+        // var price = {"thedata": mydata };
+        rp(totalUrl)
+        .then(function (theStuff) {
+          // Process html...
+
+          var firstKey = theStuff;
+          var myData = Object.keys(firstKey)[0];
+          console.log("myData",myData);
+          var myId = firstKey[Object.keys(firstKey)[0]].price;
+    console.log("myId",myId);
+          //console.log("data:", obj.toJSON());
+          res.send(myId);
+        })
+        .catch(function (err) {
+          // Crawling failed...
+          console.log(err);
+        });
+
+    }); //end get api cointotal
+
+    app.post('/api/cointotal', function(req, res) {
+      coinTotal.getData(req,res);
+
     });
 
-    // process the signup form
-    // app.post('/signup', do all our passport stuff here);
-
     // =====================================
-    // PROFILE SECTION =====================
+    // MISC -- OTHER STUFF
     // =====================================
-    // we will want this protected so you have to be logged in to visit
-    // we will use route middleware to verify this (the isLoggedIn function)
-    // app.get('/profile', isLoggedIn, function(req, res) {
-    //     // res.render('profile', {
-    //     //     user : req.user // get the user out of session and pass to template
-    //     // });
-    //     res.render('profile'); // load the index file
-    // });
-    app.get('/dashboard', function(req, res) {
-        res.render('dashboard'); // load the index file
-    });
+      // route middleware to make sure a user is logged in
+      function isLoggedIn(req, res, next) {
 
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
-    app.get('/logout', function(req, res) {
-        //req.logout();
-        res.redirect('/');
-    });
-};
+          // if user is authenticated in the session, carry on
+          if (req.isAuthenticated())
+              return next();
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
+          // if they aren't redirect them to the home page
+          res.redirect('/');
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
+      } //end isLoggedIn
+}; // end Module export
