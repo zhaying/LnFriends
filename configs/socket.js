@@ -6,7 +6,7 @@ module.exports = function (socket) {
         coinDataService.getListings();
     });
     socket.on('coinRequest', function(data) {
-        console.log('coinRequest');
+        console.log('coinRequest',data);
         coinDataService.getLatestPrice(data);
     });
     socket.on('getCurrencies', function() {

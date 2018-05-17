@@ -90,9 +90,9 @@ module.exports = {
 
 
     getLatestPrice: function (data) {
-        console.log("data=",data);
+        console.log("console.log.data=",data);
         db.currencies.findOne({ where: {currency_symbol: data.currency_symbol} }).then(result => {
-            console.log("CURRENCY: ", result.currency_name + " "+result.currency_id);
+            console.log("console.log.CURRENCY: ", result.currency_name + " "+result.currency_id);
 
         });
         //db.currencies.findOne({ where: {currency_symbol:data.currency_symbol}}).then( function(result) {
