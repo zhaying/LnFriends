@@ -50,6 +50,42 @@ module.exports = {
 				});
 
 	}, // end getData
+
+    getTheCurrencies: function () {
+        var currenciesUrl = 'https://api.coinmarketcap.com/v2/listings/';
+        console.log("currenciesUrl:",currenciesUrl);
+        var options = {
+            uri:        currenciesUrl,
+            headers:    { 'User-Agent': 'Request-Promise'},
+            json:       true // Automatically parses the JSON string in the response
+        };
+
+        rp(options)
+            .then(function (currenciesData) {
+                console.log('currenciesData:', currenciesData);
+
+                {
+                    "id": 2616,
+                    "name": "Stipend",
+                    "symbol": "SPD",
+                    "website_slug": "stipend"
+                },
+
+                var currencyData = {
+                    'symbol': priceData.data.symbol,
+                    'price': priceData.data.quotes.USD.price
+                };
+                //res.send(ladaData);
+                /*Login logic*/
+                socketMVC.emit('coinResponse',ladaData);
+            })
+            .catch(function (err) {
+                // API call failed...
+                console.log(err);
+            });
+    }, // end getData
+
+
 	getDataWithSocket: function (data) {
 		var coinSymbol = data.coinSymbol;
 		var coinID = data.coinID;

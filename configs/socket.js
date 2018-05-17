@@ -9,4 +9,8 @@ module.exports = function (socket) {
         console.log('coinRequest');
         coinDataService.getDataWithSocket(data);
     });
+    socket.on('coinRequest', function(data) {
+        console.log('coinRequest');
+        coinDataService.getDataWithSocket(data);
+    });
 };

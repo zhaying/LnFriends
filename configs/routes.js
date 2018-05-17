@@ -70,6 +70,16 @@ module.exports = function(app,passport) {
     });
 
     // =====================================
+    // API -- GET THE CURRENCIES
+    // =====================================
+    app.post('/api/get_the_currencies', function(req, res) {
+
+        coinDataService.getTheCurrencies(req,res);
+
+    }); //end get_the_currencies
+
+
+    // =====================================
     // API -- COIN DATA
     // =====================================
     //Coin Data
