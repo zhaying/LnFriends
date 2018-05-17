@@ -2,7 +2,7 @@
 var request = require('request');
 var rp = require('request-promise');
 var socketMVC = require('socket.mvc');
-
+var db            = require('../models');
 
 
 module.exports = {
@@ -63,19 +63,24 @@ module.exports = {
         rp(options)
             .then(function (currenciesData) {
                 console.log('currenciesData:', currenciesData);
-                var currencyData = {
-                    'symbol': priceData.data.symbol,
-                    'price': priceData.data.quotes.USD.price
-                };
-								currencyData = {
-                    "id": 2616,
-                    "name": "Stipend",
-                    "symbol": "SPD",
-                    "website_slug": "stipend"
-                };
-                //res.send(ladaData);
-                /*Login logic*/
-                socketMVC.emit('coinResponse',ladaData);
+
+                for (var i in currenciesData.data) {
+                    var mydata = currenciesData.data[i];
+                    console.log('mydata:', mydata);
+
+                    var currencyData = {
+                        "currency_id": mydata.id,
+                        "currency_symbol": mydata.symbol,
+                        "currency_name": mydata.name
+
+                    };
+
+                    db.currencies.create(currencyData)
+                        .then(function (result) {
+                            console.log(result);
+                            //res.json(result);
+                        });
+                }
             })
             .catch(function (err) {
                 // API call failed...
@@ -83,6 +88,38 @@ module.exports = {
             });
     }, // end getData
 
+
+    getLatestPrice: function (data) {
+        console.log("data=",data);
+        db.currencies.findOne({ where: {currency_symbol: data.currency_symbol} }).then(result => {
+            console.log("CURRENCY: ", result.currency_name + " "+result.currency_id);
+
+        });
+        //db.currencies.findOne({ where: {currency_symbol:data.currency_symbol}}).then( function(result) {
+        //    console.log("RESULT=",result.currencies);
+        //    console.log("dataValues=",dataValues);
+        //    console.log(x);
+        //
+        //    var my_url  =   "https://api.coinmarketcap.com/v2/ticker/" + result + "/?convert=USD";
+        //    var options = {
+        //            uri: my_url,
+        //            headers: { 'User-Agent': 'Request-Promise'},
+        //            json: true // Automatically parses the JSON string in the response
+        //        };
+        //    rp(options)
+        //        .then(function (priceData) {
+        //            //console.log('priceData', priceData);
+        //            console.log('priceData', "WE HAVE A RESULT");
+        //            socketMVC.emit('coinResponse',ladaData);
+        //        })
+        //        .catch(function (err) {
+        //            // API call failed...
+        //            console.log(err);
+        //        });
+        //
+        //});
+
+    }, // end getData
 
 	getDataWithSocket: function (data) {
 		var coinSymbol = data.coinSymbol;

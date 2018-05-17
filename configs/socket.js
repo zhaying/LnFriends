@@ -7,10 +7,10 @@ module.exports = function (socket) {
     });
     socket.on('coinRequest', function(data) {
         console.log('coinRequest');
-        coinDataService.getDataWithSocket(data);
+        coinDataService.getLatestPrice(data);
     });
-    socket.on('coinRequest', function(data) {
-        console.log('coinRequest');
-        coinDataService.getDataWithSocket(data);
+    socket.on('getCurrencies', function() {
+        console.log('getCurrencies');
+        coinDataService.getTheCurrencies();
     });
 };
