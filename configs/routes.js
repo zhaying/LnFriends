@@ -46,7 +46,7 @@ module.exports = function(app,passport) {
     });
 
     app.get('/sa', function(req, res) {
-        res.render('saDashboard'); // load the index file
+        res.render('sa', {title:'CoinLada | Dashboard', layout:'saMain'} ); // load the index file
     });
 
 

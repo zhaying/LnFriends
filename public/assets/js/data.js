@@ -7,6 +7,7 @@ var coinSymbol  = document.getElementById('coinSymbol'),
     btnSendCoin = document.getElementById('btnSendCoin'),
     output      = document.getElementById('output'),
     btnGetCMC   = document.getElementById('btnGetCMC');
+    //myDataTable = ;
 
 //Emit events coinmarketcap *****
 btnGetCMC.addEventListener("click", function(){
@@ -47,3 +48,9 @@ btnSendTotal.addEventListener("click", function(){
 socket.on('totalRequest',function(data){
   outputTotal.innerHTML += '<p><strong>' + data.symbol +':' + data.price +'</strong></p>';
 });
+
+//dataTables
+$(document).ready( function () {
+  console.log("document ready!");
+    $('#myDataTable').DataTable();
+} );
