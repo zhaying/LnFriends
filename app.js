@@ -35,7 +35,15 @@ app.use(bodyParser.json()); // parse application/json
 
 
 // Views template handler
-app.engine('handlebars', exphbs({extname: 'hbs', defaultLayout: 'main',layoutsDir: __dirname + '/views/layouts/' }));
+app.engine('handlebars', exphbs({
+  extname: 'hbs',
+  defaultLayout: 'main',
+  layoutsDir: __dirname + '/views/layouts/',
+  partialsDir: [
+    //  path to your partials
+    __dirname + '/views/partials',
+    ]
+}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
