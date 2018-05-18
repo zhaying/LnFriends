@@ -9,6 +9,9 @@ h1 {
 	color: black;
 	font-size: 46px;
 }
+h2 {
+  color: #4aaaa5;
+}
 
 p {
 	font-size: 24px;
@@ -115,19 +118,24 @@ width:90%;
 background-color: #DCDCDC;
 border: 1px solid white;
 margin-top: 100px;
-margin-left: 50px;
-margin-right: 50px;
+margin-left: 40px;
+margin-right: 40px;
 padding: 1em;
 -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
 opacity: .95;
 }
 #investor_form {
-	margin-top: 100px;
-	color: #4aaaa5;
-	font-size: 20px;
-	background-color: white;
-	background-size: 300px 100px;
+  width:90%;
+  background-color: #DCDCDC;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  opacity: .95;
 }
 #wallet_form {
 	margin-top: 100px;
@@ -152,12 +160,12 @@ opacity: .95;
   margin: auto;
   width: 90%;
   padding: 5px;
-  color: black;
+  color: #4aaaa5;
   display: inline-flex;
 
 }
 .rig_form_btn {
-background-color: #4aaaa5;;
+background-color: #4aaaa5;
 border: none;
 color: white;
 padding: 15px 32px;
@@ -167,6 +175,18 @@ display: inline-block;
 font-size: 16px;
 margin: 4px 2px;
 cursor: pointer;
+}
+.add_investor-btn{
+  background-color: #4aaaa5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .input{

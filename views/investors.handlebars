@@ -12,20 +12,36 @@
 <body>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="form">
-        <br>
-          <label id="lable" for="Investors">Investors:</label>
-          <input type="text" id="investors" name="name" placeholder="Enter Investor name" required="required">
-        <br>
-        <br>
-          <input type="submit" value="Add">
-        <br>
-        <br>
+    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="investor_form">
+        <h2><span>Investor Form</span></h2/>
+          <label id="investor_first_name_label" class="label" for="Investors">First Name:</label>
+          <input type="text" id="investor_first_name" class="input" name="name" placeholder="Enter First Name" required="required">
+          <br>
+          <label id="investor_last_name_label" class="label" for="Investors">Last Name:</label>
+          <input type="text" id="investor_last_name" class="input" name="name" placeholder="Enter Last Name" required="required">
+          <br>
+          <label id="investor_company_label" class="label" for="Investors">Company Name:</label>
+          <input type="text" id="investors" class="input" name="name" placeholder="Enter Company Name" required="required">
+          <br>
+          <label id="investor_user_name_label" class="label" for="Investors">User Name:</label>
+          <input type="text" id="investor_user_name" class="input" name="name" placeholder="Enter User Name" required="required">
+          <br>
+          <label id="investor_user_type_label" class="label" for="Investors">User Type:</label>
+          <input type="text" id="investor_user_name" class="input" name="name" placeholder="Enter User Type" required="required">
+          <br>
+          <label id="investor_password_label" class="label" for="Investors">Investor Password:</label>
+          <input type="text" id="investors" class="input" name="name" placeholder="Enter Password" required="required">
+          <br>
+          <label id="investor_phone_number_label" class="label" for="Investors">Enter Phone Number:</label>
+          <input type="text" id="investors" class="input" name="name" placeholder="Enter Phone Number" required="required">
+          <br>
+          <button type="button" class="add_investor-btn" name="button">Add Investor</button>
+
+
        </div>
   </div>
 </div>
-<br>
-<br>
+
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         {{>myInvestorTable}}
