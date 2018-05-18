@@ -10,7 +10,7 @@ var coinSymbol          = document.getElementById('coinSymbol'),
     output_total        = document.getElementById('output_total'),
     btnGetCMC           = document.getElementById('btnGetCMC'),
     btnGetCurrencies    = document.getElementById('btnGetCurrencies'),
-    wallet_address      = document.getElementById('wallet_address'),
+    mining_wallet_address      = document.getElementById('mining_wallet_address'),
     btnGetTotal         = document.getElementById('btnGetTotal'),
     btnGetTicker        = document.getElementById('btnGetTicker');
     //myDataTable = ;
@@ -31,7 +31,8 @@ btnSendCoin.addEventListener("click", function(){
 btnGetTotal.addEventListener("click", function(){
     console.log("btnGetTotal click");
   socket.emit('getMiningPoolTotal',{
-    "wallet_address": wallet_address.value
+      "mining_pool_name": mining_pool_name.value,
+    "mining_wallet_address": mining_wallet_address.value
   });
 });
 

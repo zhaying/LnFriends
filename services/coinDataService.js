@@ -128,7 +128,8 @@ module.exports = {
     }, // end getLatestPrice
 	  getMiningPoolTotal: function (data) {
 				console.log("console.log.data=",data);
-				db.wallets.findOne({ where: {wallet_address: data.wallet_address} }).then(result => {
+				db.wallets.findOne({ where: {wallet_address: data.mining_wallet_address} }).then(result => {
+                  //  console.log("console.log.result: ", result);
 
 						console.log("console.log.wallet_address: ", result.wallet_address );
 						// GET THE TOTAL COINS FOR A WALLET 
@@ -144,15 +145,16 @@ module.exports = {
 											 console.log('console.log.miningPoolWalletTotal', miningPoolWalletTotal);
 											 console.log('console.log.total', miningPoolWalletTotal.data.total);
 											 var miningpoolData = {
-												 miningpool_symbol: miningPoolWalletTotal.data.currency,
-												 miningpool_currency_quantity: miningPoolWalletTotal.data.total,
-												 miningpool_wallet_address: result.wallet_address
+												 mining_pool_symbol: miningPoolWalletTotal.data.currency,
+												 mining_pool_currency_quantity: miningPoolWalletTotal.data.total,
+												 mining_pool_wallet_address: result.wallet_address,
+                                                 mining_pool_name: data.mining_pool_name
 											 };
 											 console.log(miningpoolData);
 											 //db.miningpools.destroy({ where: {miningpool_symbol: tickerData.miningpool_symbol,} });
-											 db.miningpools.create(miningpoolData)
-													 .then(function (miningpoolsResult) {
-															 console.log("console.log.tickerResults",miningpoolsResult);
+											 db.mining_pool.create(miningpoolData)
+													 .then(function (mining_pool_Result) {
+															 console.log("console.log.tickerResults",mining_pool_Result);
 													 }); //end db.tickers.create then
 											// console.log('priceData', "WE HAVE A RESULT");
 											 //socketMVC.emit('coinResponse',ladaData);
