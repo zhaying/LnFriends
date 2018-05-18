@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
         "rig_name": DataTypes.STRING,
         "rig_type":  DataTypes.STRING,
         "rig_operator":   DataTypes.STRING,
-        "coin_qty":   DataTypes.DECIMAL(10, 8)
+        "rig_cost":   DataTypes.FLOAT
     });
 
   return rigs;

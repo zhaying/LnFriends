@@ -4,7 +4,7 @@
         "user_rigs_id":  DataTypes.INTEGER,
         "user_id": DataTypes.INTEGER,
         "rig_id": DataTypes.INTEGER,
-        "ownership_percent":  DataTypes.DECIMAL,
+        "ownership_percent":  DataTypes.FLOAT,
 
     });
 

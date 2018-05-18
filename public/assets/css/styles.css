@@ -102,8 +102,38 @@ nav a {
 	background-color: white;
 	background-size: 300px 100px;
 }
-
+#rig_form {
+	margin-top: 100px;
+	color: #4aaaa5;
+	font-size: 20px;
+	background-color: white;
+	background-size: 300px 100px;
+}
+#investor_form {
+	margin-top: 100px;
+	color: #4aaaa5;
+	font-size: 20px;
+	background-color: white;
+	background-size: 300px 100px;
+}
+#wallet_form {
+	margin-top: 100px;
+	color: #4aaaa5;
+	font-size: 20px;
+	background-color: white;
+	background-size: 300px 100px;
+}
+#mining_pool_form {
+	margin-top: 100px;
+	color: #4aaaa5;
+	font-size: 20px;
+	background-color: white;
+	background-size: 300px 100px;
+}
 #lable {
+	background: white;
+}
+#label {
 	background: white;
 }
 .alignInputBox {
