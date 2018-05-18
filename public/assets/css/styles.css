@@ -19,6 +19,8 @@ a {
 
 .logo {
 	position: absolute;
+	width: 250px;
+    height: 250px;
 }
 
 #signupButton{
@@ -78,4 +80,29 @@ nav a {
 .well {
 	position: relative;
 	top: 75px;
+}
+
+#login {
+	 margin-top: 65px;
+	 color: #4aaaa5;
+}
+
+#signupButton {
+	background: #007bff;
+	color: white;
+	padding: 1.375rem .75rem;
+    font-size: 30px;
+    line-height: 1;
+}
+
+#form {
+	margin-top: 100px;
+	color: #4aaaa5;
+	font-size: 20px;
+	background-color: white;
+	background-size: 300px 100px;
+}
+
+#lable {
+	background: white;
 }

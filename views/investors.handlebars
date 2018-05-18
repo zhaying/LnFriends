@@ -1,0 +1,36 @@
+<!--Views/adminConsole -->
+<!doctype html>
+<html>
+<head>
+    <title>LnFriends App</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
+     <!-- load fontawesome -->
+
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="form">
+        <br>
+          <label id="lable" for="Investors">Investors:</label>
+          <input type="text" id="investors" name="name" placeholder="Enter Investor name" required="required">
+        <br>
+        <br>
+          <input type="submit" value="Add">
+        <br>
+        <br>
+       </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        {{>myInvestorTable}}
+    </div>
+</div>
+
+</body>
+</html>
