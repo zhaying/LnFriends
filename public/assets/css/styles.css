@@ -102,12 +102,25 @@ nav a {
 	background-color: white;
 	background-size: 300px 100px;
 }
-#rig_form {
+/* #rig_form {
 	margin-top: 100px;
-	color: #4aaaa5;
+	color: 	blue;
 	font-size: 20px;
-	background-color: white;
 	background-size: 300px 100px;
+  margin-bottom: 30px;
+} */
+
+#rig_form{
+width:90%;
+background-color: #DCDCDC;
+border: 1px solid white;
+margin-top: 100px;
+margin-left: 50px;
+margin-right: 50px;
+padding: 1em;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+opacity: .95;
 }
 #investor_form {
 	margin-top: 100px;
@@ -130,13 +143,38 @@ nav a {
 	background-color: white;
 	background-size: 300px 100px;
 }
-#lable {
-	background: white;
-}
-#label {
-	background: white;
-}
 .alignInputBox {
   width:50%;
   clear:both;
+}
+.label{
+  font-size: 18px;
+  margin: auto;
+  width: 90%;
+  padding: 5px;
+  color: black;
+  display: inline-flex;
+
+}
+.rig_form_btn {
+background-color: #4aaaa5;;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+.input{
+margin-bottom: 10px;
+font-size: 18px;
+margin: auto;
+width: 90%;
+padding: 5px;
+color: black;
+display: inline-flex;
 }
