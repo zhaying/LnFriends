@@ -13,4 +13,9 @@ module.exports = function (socket) {
         console.log('getCurrencies');
         coinDataService.getTheCurrencies();
     });
+
+    socket.on('btnAddWallet', function(data) {
+        console.log('btnAddWallet', data);
+        coinDataService.addWallet(data);
+    });
 };

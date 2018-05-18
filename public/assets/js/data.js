@@ -34,24 +34,24 @@ socket.on('coinResponse',function(data){
 
 
 //JP Query document coinmarketcap *****
-var totalSymbol = document.getElementById('totalSymbol'),
-    btnSendTotal = document.getElementById('btnSendTotal'),
-    outputTotal  = document.getElementById('outputTotal'),
-    btnGetTotal  = document.getElementById('btnGetTotal');
+var enter_coin        = document.getElementById('enter_coin'),
+    wallet_address   = document.getElementById('wallet_address'),
+    btnAddWallet = document.getElementById('btnAddWallet');
 
 //JP-Emit events TheBSODPool *****
-btnGetTotal.addEventListener("click", function(){
-  socket.emit('listingRequest');
-});
-btnSendTotal.addEventListener("click", function(){
-  socket.emit('totalRequest',{
-    "totalSymbol": totalSymbol.value,
-    "coinID": "2616"
+
+btnAddWallet.addEventListener("click", function(){
+  // socket.emit('coinRequest',{
+  //   "currency_symbol": currency_symbol.value,
+  // });
+  socket.emit('btnAddWallet',{
+    "wallet_symbol": enter_coin.value,
+    "wallet_address": wallet_address.value,
   });
 });
 
 //Listen for events TheBSODPool *****
-socket.on('totalRequest',function(data){
+socket.on('wallet_results',function(data){
   outputTotal.innerHTML += '<p><strong>' + data.symbol +':' + data.price +'</strong></p>';
 });
 

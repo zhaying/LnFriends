@@ -117,8 +117,8 @@ module.exports = function(app,passport) {
     //////JP----* TheBSODPool *****
     app.get('/api/cointotal', function(req, res) {
         var totalSymbol = "SPD";
-        var totalnUrl = "http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" +totalSymbol;
-        //console.log(coinUrl);
+        var totalnUrl = "http://api.bsod.pw/api/walletEx?address=" + wallet + "STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW";
+        //console.log(coinUrl);""
         // var mydata = request(coinUrl);
         // var price = {"thedata": mydata };
         rp(totalUrl)
