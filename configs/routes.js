@@ -4,6 +4,7 @@
 var civicService = require("../services/civicService.js");
 ///Load CoinsService API Object
 var coinDataService = require("../services/coinDataService.js");
+var rigDataService = require("../services/rigDataService.js");
 
 var request = require('request');
 var rp = require('request-promise');
@@ -15,7 +16,7 @@ module.exports = function(app,passport) {
     // UI -- HOME PAGE (with login links)
     // =====================================
     app.get('/', function(req, res) {
-        res.render('login'); // load the index file
+        res.render('login', {message: 'flashLoginMessage', layout:'login' });
     });
 
 
@@ -85,6 +86,25 @@ module.exports = function(app,passport) {
     app.post('/api/get_the_currencies', function(req, res) {
 
         coinDataService.getTheCurrencies(req,res);
+
+    }); //end get_the_currencies
+    // =====================================
+    // API -- GET THE CURRENCIES
+    // =====================================
+    app.get('/api/getRigList/', function(req, res) {
+      // var dataTablesID = req.params._;
+      // console.log("console.log.dataTablesID",dataTablesID);
+      //   console.log("console.log.api");
+         rigDataService.apiGetRigs(req,res);
+
+
+// console.log('params: ' + JSON.stringify(req.params));
+// console.log('body: ' + JSON.stringify(req.body));
+// console.log('query: ' + JSON.stringify(req.query));
+
+//res.header('Content-type','application/json');
+//res.header('Charset','utf8');
+//res.jsonp(obj);
 
     }); //end get_the_currencies
 

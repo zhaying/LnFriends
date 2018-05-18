@@ -34,5 +34,32 @@ btnRefreshRigsList.addEventListener("click", function(){
 //dataTables
 $(document).ready( function () {
   console.log("Rigs document ready!");
-        $('#myRigTable').DataTable();
+        $('#myRigTable').DataTable(
+          {
+        "processing": true,
+        "serverSide": false,
+        "ajax": {url: "/api/getRigList/",
+        type: 'GET',
+      dataType: "jsonp"}
+      });
+    //     ;{
+    //     "ajax": {
+    //         url: "/api/getRigList/",
+    //         type: 'GET'
+    //     },
+    //     "processing": true,
+    //     "serverSide": true,
+    //     "bPaginate": true,
+    //     "sPaginationType": "full_numbers",
+    //     "columns": [
+    //         { "data": "rig_id" },
+    //         { "data": "rig_name" },
+    //         { "data": "rig_type" },
+    //         { "data": "rig_cost" },
+    //         { "data": "rig_operator" }
+    //     ],
+    //     columnDefs: [
+    //         { orderable: false, targets: [ 5, 7, 8 ] } //This part is ok now
+    //     ]
+    // });
 } );

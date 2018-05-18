@@ -40,6 +40,32 @@ module.exports = {
 		// Send the data over websockets
 		socketMVC.emit('rigDataServiceResponse',riglist);
 		});
-	}// end getRigs
+	}, // end getRigs
+	apiGetRigs: function (req,res) {
+		console.log("In apiGetRigs");
+		db.rigs.findAll({}).then( function(result) {
+			// CREATE Object format	for datatables
+			var riglist = {data:[]};
+			// Loop through data assigning values to new obj
+			for (var i in result) {
+				riglist.data[i] = [
+					result[i].rig_id,
+					result[i].rig_name,
+					result[i].rig_type,
+					result[i].rig_cost,
+					result[i].rig_operator,
+				]; //end riglist.data
+			} // end for loop
+
+			// Testing
+			console.log("console.log.riglist:",riglist);
+
+			// Send Back formatted object
+			res.header('Content-type','application/json');
+			res.header('Charset','utf8');
+			res.jsonp(riglist);
+
+	}); //end db.rigs.findAll
+} // end apiGetRigs
 
 };// end Module Exports
