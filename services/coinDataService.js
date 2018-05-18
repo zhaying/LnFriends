@@ -129,11 +129,9 @@ module.exports = {
 	  getMiningPoolTotal: function (data) {
 				console.log("console.log.data=",data);
 				db.wallets.findOne({ where: {wallet_address: data.wallet_address} }).then(result => {
-					var result = {
-							wallet_address: "STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW"
-					};
+
 						console.log("console.log.wallet_address: ", result.wallet_address );
-						// GET THE TOTAL COINS FOR A WALLET
+						// GET THE TOTAL COINS FOR A WALLET 
 						//http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW
 						var my_url  =   "http://api.bsod.pw/api/walletEx?address=" + result.wallet_address;
 							 var options = { 	uri: my_url,
@@ -144,18 +142,19 @@ module.exports = {
 									 .then(function (miningPoolWalletTotal) {
 										 var miningPoolWalletTotal = {"data": miningPoolWalletTotal};
 											 console.log('console.log.miningPoolWalletTotal', miningPoolWalletTotal);
-											 console.log('console.log.total', miningPoolWalletTotal.data.quotes.USD.price);
+											 console.log('console.log.total', miningPoolWalletTotal.data.total);
 											 var miningpoolData = {
 												 miningpool_symbol: miningPoolWalletTotal.data.currency,
-												 miningpool_currency_total: miningPoolWalletTotal.data.total
+												 miningpool_currency_quantity: miningPoolWalletTotal.data.total,
+												 miningpool_wallet_address: result.wallet_address
 											 };
 											 console.log(miningpoolData);
 											 //db.miningpools.destroy({ where: {miningpool_symbol: tickerData.miningpool_symbol,} });
-											 // db.miningpools.create(tickerData)
-												// 	 .then(function (tickerResults) {
-												// 			 console.log("console.log.tickerResults",tickerResults);
-												// 	 }); //end db.tickers.create then
-											 //console.log('priceData', "WE HAVE A RESULT");
+											 db.miningpools.create(miningpoolData)
+													 .then(function (miningpoolsResult) {
+															 console.log("console.log.tickerResults",miningpoolsResult);
+													 }); //end db.tickers.create then
+											// console.log('priceData', "WE HAVE A RESULT");
 											 //socketMVC.emit('coinResponse',ladaData);
 									 }) //end rp then
 									 .catch(function (err) {

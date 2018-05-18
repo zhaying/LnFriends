@@ -16,7 +16,7 @@ module.exports = function (socket) {
     socket.on('getMiningPoolTotal', function(data) {
         console.log('getMiningPoolTotal',data);
         coinDataService.getMiningPoolTotal(data);
-
+    });
     socket.on('btnAddWallet', function(data) {
         console.log('btnAddWallet', data);
         coinDataService.addWallet(data);

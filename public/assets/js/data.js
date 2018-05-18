@@ -9,10 +9,10 @@ var coinSymbol          = document.getElementById('coinSymbol'),
     output_tickers      = document.getElementById('output_tickers'),
     output_total        = document.getElementById('output_total'),
     btnGetCMC           = document.getElementById('btnGetCMC'),
-btnGetCurrencies        = document.getElementById('btnGetCurrencies'),
-wallet_address        = document.getElementById('wallet_address'),
-btnGetTotal  = document.getElementById('btnGetTotal');
-var btnGetTicker = document.getElementById('btnGetTicker');
+    btnGetCurrencies    = document.getElementById('btnGetCurrencies'),
+    wallet_address      = document.getElementById('wallet_address'),
+    btnGetTotal         = document.getElementById('btnGetTotal'),
+    btnGetTicker        = document.getElementById('btnGetTicker');
     //myDataTable = ;
 
 //Emit events coinmarketcap *****
