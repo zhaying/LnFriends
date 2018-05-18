@@ -40,22 +40,18 @@
                             <div id="output_tickers"></div>
                         </div>
 
-
-
-
 						<!-- data tables -->
-						{{>myDataTable}}
-
+						<!-- {{>myDataTable}} -->
 
 						<!-- JP- websocket test /* TheBSODPool *****-->
-						<div id="total_data_results" class="card">
-							<h3><span class="fa fa-user"></span> Data</h3>
-							<div id="tableTotalData" class="mb-5">
-								<button id="btnGetTotal" class="btn btn-secondary" >Get Total</button>
+						<div id="wallet_results" class="card">
+							<h3><span class="fa fa-user"></span>Wallet Data</h3>
+								<input id="enter_coin" type="text" placeholder="Enter Coin Symbol" />
 							</div>
-							<input id="totalSymbol" type="text" placeholder="Enter coin symbol" />
-							<button id="btnSendTotal"  class="btn btn-primary">Refresh Total</button>
-							<div id="output_total"></div>
+							<div class="enter_address">
+								<input id="wallet_address" type="text" placeholder="Enter Address">
+							</div>
+							<button id="btnAddWallet"  class="btn btn-primary">Add Wallet</button>
 						</div>
 
 					</div> <!-- ./end col-sm-6 -->

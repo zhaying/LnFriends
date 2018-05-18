@@ -193,8 +193,17 @@ module.exports = {
 						// API call failed...
 						console.log(err);
 				});
-	} // end getData
-};
+	} ,// end getData
+
+//Add Wallet
+		addWallet: function (walletData) {
+			db.wallets.create(walletData)
+				.then(function (data) {
+					console.log(data);
+				});
+		}// end AddWallet
+
+};// End Module Exports
 
 /* coinmarketcap *****
 DOCS: https://coinmarketcap.com/api/
