@@ -92,35 +92,81 @@ module.exports = {
     getLatestPrice: function (data) {
         console.log("console.log.data=",data);
         db.currencies.findOne({ where: {currency_symbol: data.currency_symbol} }).then(result => {
-            console.log("console.log.CURRENCY: ", result.currency_name + " "+result.currency_id);
+            console.log("console.log.CURRENCY: ", result.currency_name + " "+result.currency_id +" "+ result.currency_symbol);
+						// GET THE CURRENT PRICE
+						var my_url  =   "https://api.coinmarketcap.com/v2/ticker/" + result.currency_id + "/?convert=USD";
+		           var options = { 	uri: my_url,
+		                   					headers: { 'User-Agent': 'Request-Promise'},
+		                   					json: true // Automatically parses the JSON string in the response
+							 };
+		           rp(options)
+		               .then(function (priceData) {
+		                   console.log('console.log.priceData', priceData);
+											 console.log('console.log.price', priceData.data.quotes.USD.price);
+											 var tickerData = {
+												 currency_id: priceData.data.id,
+												 currency_name: priceData.data.name,
+												 currency_symbol: priceData.data.symbol,
+												 currency_price: priceData.data.quotes.USD.price
+											 };
+											 db.tickers.destroy({ where: {currency_symbol: tickerData.currency_symbol} });
+											 db.tickers.create(tickerData)
+	                         .then(function (tickerResults) {
+	                             console.log("console.log.tickerResults",tickerResults);
+	                         }); //end db.tickers.create then
+		                   //console.log('priceData', "WE HAVE A RESULT");
+		                   //socketMVC.emit('coinResponse',ladaData);
+		               }) //end rp then
+		               .catch(function (err) {
+		                   // API call failed...
+		                   console.log(err);
+		               }); //end rp catch
 
-        });
-        //db.currencies.findOne({ where: {currency_symbol:data.currency_symbol}}).then( function(result) {
-        //    console.log("RESULT=",result.currencies);
-        //    console.log("dataValues=",dataValues);
-        //    console.log(x);
-        //
-        //    var my_url  =   "https://api.coinmarketcap.com/v2/ticker/" + result + "/?convert=USD";
-        //    var options = {
-        //            uri: my_url,
-        //            headers: { 'User-Agent': 'Request-Promise'},
-        //            json: true // Automatically parses the JSON string in the response
-        //        };
-        //    rp(options)
-        //        .then(function (priceData) {
-        //            //console.log('priceData', priceData);
-        //            console.log('priceData', "WE HAVE A RESULT");
-        //            socketMVC.emit('coinResponse',ladaData);
-        //        })
-        //        .catch(function (err) {
-        //            // API call failed...
-        //            console.log(err);
-        //        });
-        //
-        //});
 
-    }, // end getData
+        }); //end db.currencies.findOne
 
+    }, // end getLatestPrice
+	  getMiningPoolTotal: function (data) {
+				console.log("console.log.data=",data);
+				db.wallets.findOne({ where: {wallet_address: data.wallet_address} }).then(result => {
+					var result = {
+							wallet_address: "STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW"
+					};
+						console.log("console.log.wallet_address: ", result.wallet_address );
+						// GET THE TOTAL COINS FOR A WALLET
+						//http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW
+						var my_url  =   "http://api.bsod.pw/api/walletEx?address=" + result.wallet_address;
+							 var options = { 	uri: my_url,
+																headers: { 'User-Agent': 'Request-Promise'},
+																json: true // Automatically parses the JSON string in the response
+							 };
+							 rp(options)
+									 .then(function (miningPoolWalletTotal) {
+										 var miningPoolWalletTotal = {"data": miningPoolWalletTotal};
+											 console.log('console.log.miningPoolWalletTotal', miningPoolWalletTotal);
+											 console.log('console.log.total', miningPoolWalletTotal.data.quotes.USD.price);
+											 var miningpoolData = {
+												 miningpool_symbol: miningPoolWalletTotal.data.currency,
+												 miningpool_currency_total: miningPoolWalletTotal.data.total
+											 };
+											 console.log(miningpoolData);
+											 //db.miningpools.destroy({ where: {miningpool_symbol: tickerData.miningpool_symbol,} });
+											 // db.miningpools.create(tickerData)
+												// 	 .then(function (tickerResults) {
+												// 			 console.log("console.log.tickerResults",tickerResults);
+												// 	 }); //end db.tickers.create then
+											 //console.log('priceData', "WE HAVE A RESULT");
+											 //socketMVC.emit('coinResponse',ladaData);
+									 }) //end rp then
+									 .catch(function (err) {
+											 // API call failed...
+											 console.log(err);
+									 }); //end rp catch
+
+
+				}); //end db.currencies.findOne
+
+		}, // end getMiningPoolTotal
 	getDataWithSocket: function (data) {
 		var coinSymbol = data.coinSymbol;
 		var coinID = data.coinID;

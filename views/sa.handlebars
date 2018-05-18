@@ -29,11 +29,14 @@
                         <!-- websocket test -->
                         <div id="coin_data_results" class="card mb-5">
                             <h3><span class="fa fa-user"></span> Tickers</h3>
-                            <div id="tableCoinData" class="mb-5">
-                                <button id="btnGetTicker" class="btn btn-secondary" >Get Current Price</button>
-                            </div>
                             <input id="currency_symbol" type="text" placeholder="Enter coin symbol" />
                             <button id="btnSendCoin"  class="btn btn-secondary">Refresh Price</button>
+                            <div id="output_tickers"></div>
+                        </div>
+												<div id="miningpools_data_results" class="card mb-5">
+                            <h3><span class="fa fa-user"></span> getMiningPoolTotal</h3>
+                            <input id="wallet_address" type="text" value="STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" placeholder="Enter coin symbol" />
+                            <button id="btnGetTotal"  class="btn btn-secondary">Get Total</button>
                             <div id="output_tickers"></div>
                         </div>
 

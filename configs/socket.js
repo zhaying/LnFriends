@@ -13,4 +13,8 @@ module.exports = function (socket) {
         console.log('getCurrencies');
         coinDataService.getTheCurrencies();
     });
+    socket.on('getMiningPoolTotal', function(data) {
+        console.log('getMiningPoolTotal',data);
+        coinDataService.getMiningPoolTotal(data);
+    });
 };
