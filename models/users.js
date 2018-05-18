@@ -11,7 +11,6 @@
         "password":  DataTypes.STRING,
         "phone":  DataTypes.STRING,
 
-
     });
 
   return users;
