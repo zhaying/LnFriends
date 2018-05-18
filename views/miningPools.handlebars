@@ -12,16 +12,16 @@
 <body>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="form">
+    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="mining_pool_form">
         <br>
-          <label id="lable" for="wallet">Mining Pool Name:</label>
-          <input type="text" id="wallet" name="name" placeholder="Enter pool name" required="required">
+          <label id="mining_pool_label" class="label"for="wallet">Mining Pool Name:</label>
+          <input type="text" id="wallet" class="input" name="name" placeholder="Enter Pool Name" required="required">
         <br>
-          <label id="lable" for="coin">Mining Pool API URL:</label>
-          <input type="text" id="coin" name="name" placeholder="Enter pool name" required="required">
-        <br> 
-        <br> 
-          <input type="submit" value="Add">
+          <label id="mining_pool_url_label" class="label"for="coin">Mining Pool API URL:</label>
+          <input type="text" id="coin" class="input" name="name" placeholder="Mining Pool API URL" required="required">
+        <br>
+        <br>
+          <button type="button" class="mining_pool_btn" name="button">Add To Mining Pool</button>
         <br>
         <br>
        </div>
