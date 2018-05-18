@@ -10,7 +10,27 @@
 
 </head>
 <body>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="form">
+        <br>
+          <label id="lable" for="Investors">Investors:</label>
+          <input type="text" id="investors" name="name" placeholder="Enter Investor name" required="required">
+        <br>
+        <br>
+          <input type="submit" value="Add">
+        <br>
+        <br>
+       </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        {{>myInvestorTable}}
+    </div>
+</div>
 
 </body>
 </html>

@@ -3,26 +3,41 @@ var theDataUrl  = location.protocol +"//" + location.host;
 var socket      = io.connect(theDataUrl);
 
 //Query document coinmarketcap *****
-var coinSymbol  = document.getElementById('coinSymbol'),
-    btnSendCoin = document.getElementById('btnSendCoin'),
-    output      = document.getElementById('output'),
-    btnGetCMC   = document.getElementById('btnGetCMC');
+var coinSymbol          = document.getElementById('coinSymbol'),
+    btnSendCoin         = document.getElementById('btnSendCoin'),
+    output_currrencies  = document.getElementById('output_currrencies'),
+    output_tickers      = document.getElementById('output_tickers'),
+    output_total        = document.getElementById('output_total'),
+    btnGetCMC           = document.getElementById('btnGetCMC'),
+btnGetCurrencies        = document.getElementById('btnGetCurrencies'),
+wallet_address        = document.getElementById('wallet_address'),
+btnGetTotal  = document.getElementById('btnGetTotal');
+var btnGetTicker = document.getElementById('btnGetTicker');
     //myDataTable = ;
 
 //Emit events coinmarketcap *****
-btnGetCMC.addEventListener("click", function(){
-  socket.emit('listingRequest');
-});
-btnSendCoin.addEventListener("click", function(){
-  socket.emit('coinRequest',{
-    "coinSymbol": coinSymbol.value,
-    "coinID": "2616"
-  });
-});
+// btnGetCurrencies.addEventListener("click", function(){
+//     socket.emit('getCurrencies');
+// });
+// btnGetTicker.addEventListener("click", function(){
+//   socket.emit('listingRequest');
+// });
+// btnSendCoin.addEventListener("click", function(){
+//     console.log("btnSendCoin click");
+//   socket.emit('coinRequest',{
+//     "currency_symbol": currency_symbol.value
+//   });
+// });
+// btnGetTotal.addEventListener("click", function(){
+//     console.log("btnGetTotal click");
+//   socket.emit('getMiningPoolTotal',{
+//     "wallet_address": wallet_address.value
+//   });
+// });
 
 //Listen for events coinmarketcap *****
 socket.on('coinResponse',function(data){
-  output.innerHTML += '<p><strong>' + data.symbol +':' + data.price +'</strong></p>';
+    output_tickers.innerHTML += '<p><strong>' + data.symbol +':' + data.price +'</strong></p>';
 });
 
 
