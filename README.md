@@ -13,10 +13,10 @@ Tech used
 
 We are currently using the following technologies:
 
-Civic Secure Identity Platform for passwordless login
-node.js as the backend server
-express as the routing engine
-handlebars for html templating
-mysql to hold the data
-sequelize as the orm to manage the data
+Civic Secure Identity Platform for passwordless login\
+node.js as the backend server\
+express as the routing engine\
+handlebars for html templating\
+mysql to hold the data\
+sequelize as the orm to manage the data\
 socket.io to pass the data from the front-end to the backend
