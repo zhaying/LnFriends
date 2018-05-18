@@ -106,3 +106,7 @@ nav a {
 #lable {
 	background: white;
 }
+.alignInputBox {
+  width:50%;
+  clear:both;
+}

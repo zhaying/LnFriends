@@ -40,17 +40,19 @@ module.exports = function(app,passport) {
     app.get('/dashboard', function(req, res) {
         res.render('dashboard'); // load the index file
     });
-
-    app.get('/wallet', function(req, res) {
-        res.render('wallet'); // load the index file
+    app.get('/rigs', function(req, res) {
+        res.render('rigs'); // load the index file
+    });
+    app.get('/wallets', function(req, res) {
+        res.render('wallets'); // load the index file
     });
 
     app.get('/investors', function(req, res) {
         res.render('investors'); // load the index file
     });
 
-    app.get('/miningPool', function(req, res) {
-        res.render('miningPool'); // load the index file
+    app.get('/miningPools', function(req, res) {
+        res.render('miningPools'); // load the index file
     });
 
     app.get('/sa', function(req, res) {
