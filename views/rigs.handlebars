@@ -1,0 +1,36 @@
+<!--views/rigs -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 text-center enter_selection " id="rig_form">
+          <h2><span>Rigs Form</span></h2/>
+              <label id="rig_id_label" class="label" for="rig_id">Rig ID:</label>
+              <input type="text" id="rig_id" class="input" name="name" placeholder="Enter Rig Id" required="required">
+            <br>
+              <label id="rig_name_label" class="label" for="rig_name">Rig Name:</label>
+              <input type="text" id="rig_name" class="input" name="name" placeholder="Enter Rig Name" required="required">
+            <br>
+              <label id="rig_type_label" class="label"for="rig_type">Rig Type:</label>
+              <input type="text" id="rig_type" class="input" name="name" placeholder="Enter Rig Type" required="required">
+            <br>
+              <label id="rig_cost_label" class="label" for="rig_cost">Rig Cost:</label>
+              <input type="text" id="rig_cost" class="input" name="name" placeholder="Enter Cost (ex. 10000)" required="required">
+            <br>
+              <label id="rig_operator_label" class="label"for="rig_operator">Rig Operator:</label>
+              <input type="text" id="rig_operator" class="input" name="name" placeholder="Enter Rig Operator" required="required">
+            <br>
+            <br>
+              <button id="btnAddRig"  class="rig_form_btn">Add Rig</button>
+            <br>
+            <br>
+           </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            {{>myRigTable}}
+        </div>
+    </div>
+
+    <script src="assets/js/rigs.js"></script>

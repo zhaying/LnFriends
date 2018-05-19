@@ -9,6 +9,9 @@ h1 {
 	color: black;
 	font-size: 46px;
 }
+h2 {
+  color: #4aaaa5;
+}
 
 p {
 	font-size: 24px;
@@ -19,10 +22,12 @@ a {
 
 .logo {
 	position: absolute;
+	width: 250px;
+    height: 250px;
 }
 
 #signupButton{
-	margin-top: 100px; 
+	margin-top: 100px;
 }
 
 #signupButtonNoAuth {
@@ -33,4 +38,256 @@ a {
 	padding: 1.375rem .75rem;
     font-size: 30px;
     line-height: 1;
+}
+
+#masthead {
+ position: fixed;
+ z-index: 99;
+ width: 100%;
+ margin: 0 0 30px;
+ overflow: auto;
+ color: #fff;
+ background: #fff;
+ border-bottom: 2px solid #ccc;
+}
+
+#logo {
+ float: left;
+ width: 250px;
+ height: 90px;
+ font-family: Georgia, Times, "Times New Roman", serif;
+ font-size: 30px;
+ font-weight: 700;
+ line-height: 90px;
+ color: #fff;
+ text-align: center;
+ text-decoration: none;
+ background: #4aaaa5;
+}
+
+nav {
+ float: right;
+ margin-top: 25px;
+}
+
+nav a {
+ display: inline-block;
+ padding-left: 15px;
+ margin-left: 15px;
+ line-height: 18px;
+ color: #999;
+ text-decoration: none;
+ border-left: 1px solid #efefef;
+}
+
+.well {
+	position: relative;
+	top: 75px;
+}
+
+#login {
+	 margin-top: 65px;
+	 color: #4aaaa5;
+}
+
+#signupButton {
+	background: #007bff;
+	color: white;
+	padding: 1.375rem .75rem;
+    font-size: 30px;
+    line-height: 1;
+}
+
+#form {
+	margin-top: 100px;
+	color: #4aaaa5;
+	font-size: 20px;
+	background-color: white;
+	background-size: 300px 100px;
+}
+/* #rig_form {
+	margin-top: 100px;
+	color: 	blue;
+	font-size: 20px;
+	background-size: 300px 100px;
+  margin-bottom: 30px;
+} */
+
+#investor_form {
+  width:90%;
+  background-color: #DCDCDC;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  opacity: .95;
+}
+#mining_pool_form {
+  width:90%;
+  background-color: #DCDCDC;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  opacity: .95;
+}
+.myTable{
+  width:90%;
+  background-color: #DCDCDC;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  opacity: .95;
+}
+table {
+  border-collapse: collapse;
+  width: 200%;
+  color: #4aaaa5;
+}
+
+th {
+    width: 25%;
+    height: 60px;
+    text-align: left;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    color: #4aaaa5;
+}
+tr:hover {
+  background-color:#f5f5f5;
+}
+
+#rig_form{
+width:90%;
+background-color: #DCDCDC;
+border: 1px solid white;
+margin-top: 100px;
+margin-left: 40px;
+margin-right: 40px;
+padding: 1em;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+opacity: .95;
+}
+#wallet_form {
+  width:90%;
+  background-color: #DCDCDC;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  opacity: .95;
+}
+
+.alignInputBox {
+  width:50%;
+  clear:both;
+}
+.label{
+  font-size: 18px;
+  margin: auto;
+  width: 90%;
+  padding: 5px;
+  color: #4aaaa5;
+  display: inline-flex;
+
+}
+.rig_form_btn {
+background-color: #4aaaa5;
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+.add_wallet_btn{
+  background-color: #4aaaa5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.mining_pool_btn {
+  background-color: #4aaaa5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.add_investor-btn{
+  background-color: #4aaaa5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btnRefreshRigsList {
+  background-color: #4aaaa5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btnRefreshList{
+  background-color: #4aaaa5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.input{
+margin-bottom: 10px;
+font-size: 18px;
+margin: auto;
+width: 90%;
+padding: 5px;
+color: black;
+display: inline-flex;
 }
