@@ -1,8 +1,9 @@
 <!-- views/Login -->
 <!doctype html>
 <html>
-<head>
+  <head>
     <title>CoinLada</title>
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
@@ -10,34 +11,13 @@
     <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
     <link rel="shortcut icon" type="image/x-icon" href="coinLada.png">
 
-<script src="https://hosted-sip.civic.com/js/civic.sip.min.js"></script>
-</head>
-<body>
-    <img class="logo" src="assets/css/coinLada.png" alt="logo" />
-    <div class="text-center">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://hosted-sip.civic.com/js/civic.sip.min.js"></script>
 
-<div class="container">
+  </head>
 
-    <div class="text-center">
+  <body>
+  {{{ body }}}
+  </body>
 
-
-        <h1 id="login">Login or Register with Civic</h1>
-
-        <!-- <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a> -->
-        <button id="signupButton" class="civic-button-a medium" type="button" onclick='signupButton'>
-          <span>Log in with Civic</span>
-        </button>
-        <button id="signupButtonNoAuth" class="civic-button-a medium" type="button" onclick='signupButtonNoAuth'>
-          <span>Login No auth</span>
-        </button>
-        <br /><br /><br /><br /><br />
-        <a href="https://www.civic.com/app" class="btn btn-primary" target="_blank">Get<span class="hide-when-mobile">Civic</span>App</a>
-
-    </div>
-
-</div>
-{{{ body }}}
-<script src="assets/js/loginScript.js"></script>
-</body>
 </html>
