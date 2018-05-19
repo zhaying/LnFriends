@@ -84,7 +84,7 @@ module.exports = function(app,passport) {
     });
 
     // =====================================
-    // API -- GET THE CURRENCIES
+    // API -- GET THE CURRENCIES 
     // =====================================
     app.post('/api/get_the_currencies', function(req, res) {
 
@@ -107,6 +107,11 @@ module.exports = function(app,passport) {
     app.get('/api/getWalletList/', function(req, res) {
           console.log("In getWalletList");
          walletDataService.apiGetWallets(req,res);
+    }); //end get api getInvestorList
+
+    app.get('/api/getMiningPoolList/', function(req, res) {
+          console.log("In getMiningPoolList");
+         miningPoolDataService.apiGetMiningPools(req,res);
     }); //end get api getInvestorList
 
 
