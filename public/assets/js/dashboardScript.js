@@ -1,5 +1,7 @@
 //dataTables
 $(document).ready( function () {
+  var theDataUrl  = location.protocol +"//" + location.host;
+  var socket      = io.connect(theDataUrl);
   console.log("dashboard document ready!");
 
 
@@ -19,8 +21,11 @@ $(document).ready( function () {
 var civicSip = new civic.sip({ appId: 'ryQVAxWAM' });
 var btnTest = document.querySelector("#btnTest");
 
-btnRefreshWalletList.addEventListener("click", function(){
-    console.log("btnRefreshWalletList click");
+btnRefreshTickerList.addEventListener("click", function(){
+    console.log("btnRefreshTickerList click");
+    socket.emit('coinRequest',{
+      "currency_symbol": 'SPD'
+    });
     myTheDashboardTable.ajax.url( "/api/getDashboardList/" ).load( function () {
       console.log("data tables ajax reload");
     });
