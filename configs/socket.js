@@ -60,7 +60,17 @@ module.exports = function (socket) {
     });
     socket.on('getListOfWallets', function() {
         console.log('console.log.getListOfWallets');
-        investorDataService.getListOfInvestors();
+        walletDataService.getListOfInvestors();
+    });
+
+    //miningPools
+    socket.on('addingMiningPool', function(data) {
+        console.log('console.log.addingMiningPool', data);
+        miningPoolDataService.addMining_pool(data);
+    });
+    socket.on('getListOfMiningPools', function() {
+        console.log('console.log.getListOfMiningPools');
+        miningPoolDataService.getListOfMiningPools();
     });
 
 };
