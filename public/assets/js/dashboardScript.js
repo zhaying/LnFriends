@@ -1,9 +1,36 @@
+//dataTables
+$(document).ready( function () {
+  console.log("dashboard document ready!");
+
+
+      var  myTheDashboardTable =  $('#myDashboardTable').DataTable(
+          {
+        "processing": true,
+        "serverSide": false,
+        "ajax": {url: "/api/getDashboardList/",
+        type: 'GET',
+      dataType: "jsonp"}
+      });
+
+
 // $( document ).ready(function() {
 //     console.log( "ready!" );
 //      // Jackie
 var civicSip = new civic.sip({ appId: 'ryQVAxWAM' });
 var btnTest = document.querySelector("#btnTest");
 
+btnRefreshWalletList.addEventListener("click", function(){
+    console.log("btnRefreshWalletList click");
+    myTheDashboardTable.ajax.url( "/api/getDashboardList/" ).load( function () {
+      console.log("data tables ajax reload");
+    });
+  // socket.emit('getListOfWallets');
+});
+
+
+      setInterval( function () {
+        myTheDashboardTable.ajax.reload( null, false ); // user paging is not reset on reload
+      }, 30000 );
 // btnTest.addEventListener("click", function(){
 //   var xhr = new XMLHttpRequest();
 // xhr.open("POST", '/api/coindata', true);
@@ -26,7 +53,6 @@ var btnTest = document.querySelector("#btnTest");
 //   console.log("btnTest click!",coinMarket);
 // });
 // });
-$(document).ready( function () {
-  console.log("dashboard document ready!");
+
   // civicSip.signup({ style: 'popup', scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP });
 });

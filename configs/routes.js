@@ -12,6 +12,7 @@ var coinDataService       = require("../services/coinDataService.js"),
     rigDataService        = require("../services/rigDataService.js"),
     investorDataService   = require("../services/investorDataService.js"),
     walletDataService     = require("../services/walletDataService.js"),
+    tickerDataService     = require("../services/tickerDataService.js"),
     miningPoolDataService = require("../services/miningPoolDataService.js");
 
 module.exports = function(app,passport) {
@@ -117,6 +118,11 @@ module.exports = function(app,passport) {
     app.get('/api/getMiningPoolList/', function(req, res) {
           console.log("In getMiningPoolList");
          miningPoolDataService.apiGetMiningPools(req,res);
+    }); //end get api getInvestorList
+
+    app.get('/api/getDashboardList/', function(req, res) {
+          console.log("In getMiningPoolList");
+         tickerDataService.apiGetDashboardList(req,res);
     }); //end get api getInvestorList
 
 

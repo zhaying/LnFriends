@@ -3,6 +3,7 @@ var coinDataService       = require("../services/coinDataService.js"),
     rigDataService        = require("../services/rigDataService.js"),
     investorDataService   = require("../services/investorDataService.js"),
     walletDataService     = require("../services/walletDataService.js"),
+    tickerDataService     = require("../services/tickerDataService.js"),
     miningPoolDataService = require("../services/miningPoolDataService.js");
 
 module.exports = function (socket) {
@@ -71,6 +72,12 @@ module.exports = function (socket) {
     socket.on('getListOfMiningPools', function() {
         console.log('console.log.getListOfMiningPools');
         miningPoolDataService.getListOfMiningPools();
+    });
+
+    //getDashboardList
+    socket.on('getDashboardList', function() {
+        console.log('console.log.getDashboardList');
+        tickerDataService.getDashboardList();
     });
 
 };
