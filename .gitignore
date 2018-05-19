@@ -59,3 +59,6 @@ typings/
 
 # node package json lock
 package-lock.json
+
+# removed ide project files
+.idea

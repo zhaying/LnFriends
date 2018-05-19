@@ -128,12 +128,11 @@ module.exports = {
     }, // end getLatestPrice
 	  getMiningPoolTotal: function (data) {
 				console.log("console.log.data=",data);
-				db.wallets.findOne({ where: {wallet_address: data.wallet_address} }).then(result => {
-					var result = {
-							wallet_address: "STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW"
-					};
+				db.wallets.findOne({ where: {wallet_address: data.mining_wallet_address} }).then(result => {
+                  //  console.log("console.log.result: ", result);
+
 						console.log("console.log.wallet_address: ", result.wallet_address );
-						// GET THE TOTAL COINS FOR A WALLET
+						// GET THE TOTAL COINS FOR A WALLET 
 						//http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW
 						var my_url  =   "http://api.bsod.pw/api/walletEx?address=" + result.wallet_address;
 							 var options = { 	uri: my_url,
@@ -144,18 +143,20 @@ module.exports = {
 									 .then(function (miningPoolWalletTotal) {
 										 var miningPoolWalletTotal = {"data": miningPoolWalletTotal};
 											 console.log('console.log.miningPoolWalletTotal', miningPoolWalletTotal);
-											 console.log('console.log.total', miningPoolWalletTotal.data.quotes.USD.price);
+											 console.log('console.log.total', miningPoolWalletTotal.data.total);
 											 var miningpoolData = {
-												 miningpool_symbol: miningPoolWalletTotal.data.currency,
-												 miningpool_currency_total: miningPoolWalletTotal.data.total
+												 mining_pool_symbol: miningPoolWalletTotal.data.currency,
+												 mining_pool_currency_quantity: miningPoolWalletTotal.data.total,
+												 mining_pool_wallet_address: result.wallet_address,
+                                                 mining_pool_name: data.mining_pool_name
 											 };
 											 console.log(miningpoolData);
 											 //db.miningpools.destroy({ where: {miningpool_symbol: tickerData.miningpool_symbol,} });
-											 // db.miningpools.create(tickerData)
-												// 	 .then(function (tickerResults) {
-												// 			 console.log("console.log.tickerResults",tickerResults);
-												// 	 }); //end db.tickers.create then
-											 //console.log('priceData', "WE HAVE A RESULT");
+											 db.mining_pool.create(miningpoolData)
+													 .then(function (mining_pool_Result) {
+															 console.log("console.log.tickerResults",mining_pool_Result);
+													 }); //end db.tickers.create then
+											// console.log('priceData', "WE HAVE A RESULT");
 											 //socketMVC.emit('coinResponse',ladaData);
 									 }) //end rp then
 									 .catch(function (err) {
@@ -193,8 +194,17 @@ module.exports = {
 						// API call failed...
 						console.log(err);
 				});
-	} // end getData
-};
+	} ,// end getData
+
+//Add Wallet
+		addWallet: function (walletData) {
+			db.wallets.create(walletData)
+				.then(function (data) {
+					console.log(data);
+				});
+		}// end AddWallet
+
+};// End Module Exports
 
 /* coinmarketcap *****
 DOCS: https://coinmarketcap.com/api/

@@ -15,9 +15,9 @@
 				<div class="row">
 					<!-- LOCAL INFORMATION -->
 					<div class="col-sm-g">
-						{{>nav}}
+					
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-7">
                         <div id="coin_data_results" class="card mb-5">
                             <h3><span class="fa fa-user"></span> Currencies</h3>
                             <div id="tableCoinData" class="mb-5">
@@ -35,27 +35,25 @@
                         </div>
 												<div id="miningpools_data_results" class="card mb-5">
                             <h3><span class="fa fa-user"></span> getMiningPoolTotal</h3>
-                            <input id="wallet_address" type="text" value="STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" placeholder="Enter coin symbol" />
+							<p>Test Value: STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW</p>
+                            <input id="mining_pool_name" type="text" placeholder="Enter mining pool name" />
+                            <input id="mining_wallet_address" type="text" placeholder="STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" />
                             <button id="btnGetTotal"  class="btn btn-secondary">Get Total</button>
-                            <div id="output_tickers"></div>
+                            <div id="output_mining_pools"></div>
                         </div>
 
-
-
-
 						<!-- data tables -->
-						{{>myDataTable}}
-
+						<!-- {{>myDataTable}} -->
 
 						<!-- JP- websocket test /* TheBSODPool *****-->
-						<div id="total_data_results" class="card">
-							<h3><span class="fa fa-user"></span> Data</h3>
-							<div id="tableTotalData" class="mb-5">
-								<button id="btnGetTotal" class="btn btn-secondary" >Get Total</button>
+						<div id="wallet_results" class="card">
+							<h3><span class="fa fa-user"></span>Wallet Data</h3>
+								<input id="enter_coin" type="text" placeholder="Enter Coin Symbol" />
 							</div>
-							<input id="totalSymbol" type="text" placeholder="Enter coin symbol" />
-							<button id="btnSendTotal"  class="btn btn-primary">Refresh Total</button>
-							<div id="output_total"></div>
+							<div class="enter_address">
+								<input id="wallet_address" type="text" placeholder="Enter Address">
+							</div>
+							<button id="btnAddWallet"  class="btn btn-primary">Add Wallet</button>
 						</div>
 
 					</div> <!-- ./end col-sm-6 -->

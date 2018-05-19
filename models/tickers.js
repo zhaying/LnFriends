@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
         "currency_id":      DataTypes.INTEGER,
         "currency_name":    DataTypes.STRING,
         "currency_symbol":  DataTypes.STRING,
-        "currency_price":   DataTypes.DECIMAL(10, 2) 
+        "currency_price":   DataTypes.FLOAT 
     });
 
   return tickers;
