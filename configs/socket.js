@@ -56,11 +56,11 @@ module.exports = function (socket) {
     //wallets
     socket.on('addingWallet', function(data) {
         console.log('console.log.addingWallet', data);
-        walletDataService.addInvestor(data);
+        walletDataService.addWallet(data);
     });
     socket.on('getListOfWallets', function() {
         console.log('console.log.getListOfWallets');
-        walletDataService.getListOfInvestors();
+        walletDataService.getListOfWallets();
     });
 
     //miningPools
