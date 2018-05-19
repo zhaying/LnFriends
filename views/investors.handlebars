@@ -1,15 +1,4 @@
 <!--Views/adminConsole -->
-<!doctype html>
-<html>
-<head>
-    <title>LnFriends App</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
-     <!-- load fontawesome -->
-
-</head>
-<body>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="investor_form">
@@ -21,18 +10,18 @@
           <input type="text" id="investor_last_name" class="input" name="name" placeholder="Enter Last Name" required="required">
           <br>
           <label id="investor_company_label" class="label" for="Investors">Company Name:</label>
-          <input type="text" id="investors" class="input" name="name" placeholder="Enter Company Name" required="required">
+          <input type="text" id="investor_company_name" class="input" name="name" placeholder="Enter Company Name" required="required">
           <br>
           <label id="investor_user_name_label" class="label" for="Investors">User Name:</label>
           <input type="text" id="investor_user_name" class="input" name="name" placeholder="Enter User Name" required="required">
           <br>
           <label id="investor_user_type_label" class="label" for="Investors">User Type:</label>
-          <input type="text" id="investor_user_name" class="input" name="name" placeholder="Enter User Type" required="required">
+          <input type="text" id="investor_user_type" class="input" name="name" placeholder="Enter User Type" required="required">
           <br>
           <label id="investor_phone_number_label" class="label" for="Investors">Enter Phone Number:</label>
-          <input type="text" id="investors" class="input" name="name" placeholder="Enter Phone Number" required="required">
+          <input type="text" id="investor_phone" class="input" name="name" placeholder="Enter Phone Number" required="required">
           <br>
-          <button type="button" class="add_investor-btn" name="button">Add Investor</button>
+          <button id="btnAddInvestor" name="button"  class="add_investor-btn" type="button">Add Investor</button>
 
 
        </div>
@@ -44,6 +33,4 @@
         {{>myInvestorTable}}
     </div>
 </div>
-
-</body>
-</html>
+    <script src="assets/js/investors.js"></script>

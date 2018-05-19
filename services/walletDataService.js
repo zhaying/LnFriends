@@ -7,45 +7,40 @@ var request		= require('request'),
 
 module.exports = {
 
-	//Add Investor
-	addInvestor: function (investorData) {
-		db.users.create(investorData)
-			.then(function (investorDataCreateResult) {
-				console.log("console.log.investorDataCreateResult: ",investorDataCreateResult);
+	//Add wallet
+	addWallet: function (walletData) {
+		db.wallets.create(walletData)
+			.then(function (walletDataCreateResult) {
+				console.log("console.log.walletDataCreateResult: ",walletDataCreateResult);
 			});
-		}, // end addInvestor
+		}, // end addwallet
 
-		apiGetInvestors: function (req,res) {
-			console.log("In apiGetInvestors");
-			db.users.findAll({}).then( function(result) {
-				//console.log("apiGetInvestors: console.log.result",result);
+		apiGetWallets: function (req,res) {
+			console.log("In apiGetWallets");
+			db.wallets.findAll({}).then( function(result) {
 				// CREATE Object format	for datatables
-				var investorlist = {data:[]};
+				var walletlist = {data:[]};
 				// Loop through data assigning values to new obj
-				//
 				for (var i in result) {
-					investorlist.data[i] = [
-						result[i].user_id,
-						result[i].user_name,
-						result[i].last_name,
-						result[i].first_name,
-						result[i].company_name,
-						result[i].phone,
-						result[i].user_type,
-						result[i].updatedAt,
-					]; //end investorlist.data
+					walletlist.data[i] = [
+						result[i].wallet_id,
+						result[i].wallet_name,
+						result[i].wallet_type,
+						result[i].wallet_cost,
+						result[i].wallet_operator,
+					]; //end walletlist.data
 				} // end for loop
 
 				// Testing
-				console.log("console.log.investorlist:",investorlist);
+				console.log("console.log.walletlist:",walletlist);
 
 				// Send Back formatted object
 				res.header('Content-type','application/json');
 				res.header('Charset','utf8');
-				res.jsonp(investorlist);
+				res.jsonp(walletlist);
 
-		}); //end db.investors.findAll
-	} // end apiGetInvestors
+		}); //end db.wallets.findAll
+	} // end apiGetWallets
 
 
 	//Get all Investors

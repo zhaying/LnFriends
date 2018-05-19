@@ -1,14 +1,17 @@
 // configs/routes.js
 
 //Load Modules
-var civicService = require("../services/civicService.js");
-///Load CoinsService API Object
-var coinDataService = require("../services/coinDataService.js");
-var rigDataService = require("../services/rigDataService.js");
-
-var request = require('request');
-var rp = require('request-promise');
+var civicService  = require("../services/civicService.js");
+var request       = require('request');
+var rp            = require('request-promise');
 var db            = require('../models');
+
+//Load custom Services
+var coinDataService       = require("../services/coinDataService.js"),
+    rigDataService        = require("../services/rigDataService.js"),
+    investorDataService   = require("../services/investorDataService.js"),
+    walletDataService     = require("../services/walletDataService.js"),
+    miningPoolDataService = require("../services/miningPoolDataService.js");
 
 module.exports = function(app,passport) {
 
@@ -89,24 +92,18 @@ module.exports = function(app,passport) {
 
     }); //end get_the_currencies
     // =====================================
-    // API -- GET THE CURRENCIES
+    // API -- DATATABLES JSONP ROUTES
     // =====================================
     app.get('/api/getRigList/', function(req, res) {
-      // var dataTablesID = req.params._;
-      // console.log("console.log.dataTablesID",dataTablesID);
-      //   console.log("console.log.api");
+
          rigDataService.apiGetRigs(req,res);
+    }); //end get api getRigList
 
+    app.get('/api/getInvestorList/', function(req, res) {
+          console.log("In getInvestorList");
+         investorDataService.apiGetInvestors(req,res);
+    }); //end get api getInvestorList
 
-// console.log('params: ' + JSON.stringify(req.params));
-// console.log('body: ' + JSON.stringify(req.body));
-// console.log('query: ' + JSON.stringify(req.query));
-
-//res.header('Content-type','application/json');
-//res.header('Charset','utf8');
-//res.jsonp(obj);
-
-    }); //end get_the_currencies
 
 
     // =====================================

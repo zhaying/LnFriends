@@ -3,63 +3,46 @@ var theDataUrl  = location.protocol +"//" + location.host;
 var socket      = io.connect(theDataUrl);
 
 //Assign variables to elements on page inputs and buttons
-var rig_form      = document.getElementById('rig_form'),
+var investor_form      = document.getElementById('investor_form'),
+
     // INPUTS
-    rig_id        = document.getElementById('rig_id'),
-    rig_name      = document.getElementById('rig_name'),
-    rig_type      = document.getElementById('rig_type'),
-    rig_cost      = document.getElementById('rig_cost'),
-    rig_operator  = document.getElementById('rig_operator'),
+    investor_first_name   = document.getElementById('investor_first_name'),
+    investor_last_name    = document.getElementById('investor_last_name'),
+    investor_company_name = document.getElementById('investor_company_name'),
+    investor_user_name    = document.getElementById('investor_user_name'),
+    investor_user_type    = document.getElementById('investor_user_type'),
+    investor_phone        = document.getElementById('investor_phone'),
+
     // BUTTONS
-    btnAddRig           = document.getElementById('btnAddRig'),
-    btnRefreshRigsList  = document.getElementById('btnRefreshRigsList');
+    btnAddInvestor          = document.getElementById('btnAddInvestor'),
+    btnRefreshInvestorList  = document.getElementById('btnRefreshInvestorList');
 
 //Emit events
-btnAddRig.addEventListener("click", function(){
-    console.log("btnAddRig click");
-  socket.emit('addingARig',{
-    "rig_id":       rig_id.value,
-    "rig_name":     rig_name.value,
-    "rig_type":     rig_type.value,
-    "rig_cost":     rig_cost.value,
-    "rig_operator": rig_operator.value
+btnAddInvestor.addEventListener("click", function(){
+    console.log("btnAddInvestor click");
+  socket.emit('addingAnInvestor',{
+    "first_name":    investor_first_name.value,
+    "last_name":     investor_last_name.value,
+    "company_name":  investor_company_name.value,
+    "user_name":     investor_user_name.value,
+    "user_type":     investor_user_type.value,
+    "phone":         investor_phone.value
   });
 });
-btnRefreshRigsList.addEventListener("click", function(){
-    console.log("btnRefreshRigsList click");
-  socket.emit('getListOfRigs');
+btnRefreshInvestorList.addEventListener("click", function(){
+    console.log("btnRefreshInvestorList click");
+  socket.emit('getListOfInvestors');
 });
-
 
 //dataTables
 $(document).ready( function () {
-  console.log("Rigs document ready!");
-        $('#myRigTable').DataTable(
+  console.log("Investors document ready!");
+        $('#myInvestorTable').DataTable(
           {
         "processing": true,
         "serverSide": false,
-        "ajax": {url: "/api/getRigList/",
+        "ajax": {url: "/api/getInvestorList/",
         type: 'GET',
       dataType: "jsonp"}
       });
-    //     ;{
-    //     "ajax": {
-    //         url: "/api/getRigList/",
-    //         type: 'GET'
-    //     },
-    //     "processing": true,
-    //     "serverSide": true,
-    //     "bPaginate": true,
-    //     "sPaginationType": "full_numbers",
-    //     "columns": [
-    //         { "data": "rig_id" },
-    //         { "data": "rig_name" },
-    //         { "data": "rig_type" },
-    //         { "data": "rig_cost" },
-    //         { "data": "rig_operator" }
-    //     ],
-    //     columnDefs: [
-    //         { orderable: false, targets: [ 5, 7, 8 ] } //This part is ok now
-    //     ]
-    // });
 } );

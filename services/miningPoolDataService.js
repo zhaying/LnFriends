@@ -7,45 +7,40 @@ var request		= require('request'),
 
 module.exports = {
 
-	//Add Investor
-	addInvestor: function (investorData) {
-		db.users.create(investorData)
-			.then(function (investorDataCreateResult) {
-				console.log("console.log.investorDataCreateResult: ",investorDataCreateResult);
+	//Add mining_pool
+	addMining_pool: function (mining_poolData) {
+		db.mining_pools.create(mining_poolData)
+			.then(function (mining_poolDataCreateResult) {
+				console.log("console.log.mining_poolDataCreateResult: ",mining_poolDataCreateResult);
 			});
-		}, // end addInvestor
+		}, // end addmining_pool
 
-		apiGetInvestors: function (req,res) {
-			console.log("In apiGetInvestors");
-			db.users.findAll({}).then( function(result) {
-				//console.log("apiGetInvestors: console.log.result",result);
+		apiGetMining_pools: function (req,res) {
+			console.log("In apiGetMining_pools");
+			db.mining_pools.findAll({}).then( function(result) {
 				// CREATE Object format	for datatables
-				var investorlist = {data:[]};
+				var mining_pool_list = {data:[]};
 				// Loop through data assigning values to new obj
-				//
 				for (var i in result) {
-					investorlist.data[i] = [
-						result[i].user_id,
-						result[i].user_name,
-						result[i].last_name,
-						result[i].first_name,
-						result[i].company_name,
-						result[i].phone,
-						result[i].user_type,
-						result[i].updatedAt,
-					]; //end investorlist.data
+					mining_pool_list.data[i] = [
+						result[i].mining_pool_id,
+						result[i].mining_pool_name,
+						result[i].mining_pool_type,
+						result[i].mining_pool_cost,
+						result[i].mining_pool_operator,
+					]; //end mining_pool_list.data
 				} // end for loop
 
 				// Testing
-				console.log("console.log.investorlist:",investorlist);
+				console.log("console.log.mining_pool_list:",mining_pool_list);
 
 				// Send Back formatted object
 				res.header('Content-type','application/json');
 				res.header('Charset','utf8');
-				res.jsonp(investorlist);
+				res.jsonp(mining_pool_list);
 
-		}); //end db.investors.findAll
-	} // end apiGetInvestors
+		}); //end db.mining_pools.findAll
+	} // end apiGetMining_pools
 
 
 	//Get all Investors

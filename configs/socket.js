@@ -1,5 +1,10 @@
-var coinDataService = require("../services/coinDataService.js"),
-    rigDataService  = require("../services/rigDataService.js");
+//Load custom Services 
+var coinDataService       = require("../services/coinDataService.js"),
+    rigDataService        = require("../services/rigDataService.js"),
+    investorDataService   = require("../services/investorDataService.js"),
+    walletDataService     = require("../services/walletDataService.js"),
+    miningPoolDataService = require("../services/miningPoolDataService.js");
+
 module.exports = function (socket) {
     //You can declare all of your socket listeners in this file, but it's not required
     socket.on('listingRequest', function() {
@@ -22,6 +27,8 @@ module.exports = function (socket) {
         console.log('console.log.btnAddWallet', data);
         coinDataService.addWallet(data);
     });
+
+    //rigs
     socket.on('addingARig', function(data) {
         console.log('console.log.addingARig', data);
         rigDataService.addRig(data);
@@ -33,6 +40,16 @@ module.exports = function (socket) {
     socket.on('rigDataServiceResponse', function(data) {
         console.log('console.log.rigDataServiceResponse:',data);
 
+    });
+
+    //investors
+    socket.on('addingAnInvestor', function(data) {
+        console.log('console.log.addingAnInvestor', data);
+        investorDataService.addInvestor(data);
+    });
+    socket.on('getListOfInvestors', function() {
+        console.log('console.log.getListOfInvestors');
+        investorDataService.getListOfInvestors();
     });
 
 };
