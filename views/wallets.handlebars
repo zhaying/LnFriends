@@ -1,0 +1,39 @@
+<!--Views/adminConsole -->
+<!doctype html>
+<html>
+<head>
+    <title>LnFriends App</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
+     <!-- load fontawesome -->
+
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="wallet_form">
+        <br>
+          <label id="wallet_address_label" class="label" for="wallet">Wallet Address:</label>
+          <input type="text" id="wallet" class="input" name="name" placeholder="Enter pool name" required="required">
+        <br>
+          <label id="coin_symbol_label" class="label" for="coin">Coin Symbol:</label>
+          <input type="text" id="coin" class="input" name="name" placeholder="Enter pool name" required="required">
+        <br>
+        <br>
+          <input type="submit" class="add_wallet_btn" value="Add To Wallet">
+        <br>
+        <br>
+       </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        {{>myWalletTable}}
+    </div>
+</div>
+
+</body>
+</html>
