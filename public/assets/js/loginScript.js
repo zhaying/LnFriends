@@ -25,12 +25,12 @@ var button = document.querySelector('#signupButton');
 button.addEventListener('click', function () {
   civicSip.signup({ style: 'popup', scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP });
 });
-var buttonNoAuth = document.querySelector('#signupButtonNoAuth');
-buttonNoAuth.addEventListener('click', function () {
-  var theUiUrl = location.protocol +"//" + location.host + "/dashboard";
-  console.log(theUiUrl);
-  window.location = theUiUrl;
-});
+// var buttonNoAuth = document.querySelector('#signupButtonNoAuth');
+// buttonNoAuth.addEventListener('click', function () {
+//   var theUiUrl = location.protocol +"//" + location.host + "/dashboard";
+//   console.log(theUiUrl);
+//   window.location = theUiUrl;
+// });
 
 // Listen for data
 civicSip.on('auth-code-received', function (event) {
@@ -75,4 +75,3 @@ civicSip.on('read', function (event) {
     console.log('   Error type = ' + error.type);
     console.log('   Error message = ' + error.message);
  });
-
