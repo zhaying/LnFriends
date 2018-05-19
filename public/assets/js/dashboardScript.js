@@ -1,6 +1,7 @@
 // $( document ).ready(function() {
 //     console.log( "ready!" );
 //      // Jackie
+var civicSip = new civic.sip({ appId: 'ryQVAxWAM' });
 var btnTest = document.querySelector("#btnTest");
 
 // btnTest.addEventListener("click", function(){
@@ -25,3 +26,7 @@ var btnTest = document.querySelector("#btnTest");
 //   console.log("btnTest click!",coinMarket);
 // });
 // });
+$(document).ready( function () {
+  console.log("dashboard document ready!");
+  // civicSip.signup({ style: 'popup', scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP });
+});

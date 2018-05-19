@@ -56,11 +56,21 @@ module.exports = function (socket) {
     //wallets
     socket.on('addingWallet', function(data) {
         console.log('console.log.addingWallet', data);
-        walletDataService.addInvestor(data);
+        walletDataService.addWallet(data);
     });
     socket.on('getListOfWallets', function() {
         console.log('console.log.getListOfWallets');
-        investorDataService.getListOfInvestors();
+        walletDataService.getListOfWallets();
+    });
+
+    //miningPools
+    socket.on('addingMiningPool', function(data) {
+        console.log('console.log.addingMiningPool', data);
+        miningPoolDataService.addMining_pool(data);
+    });
+    socket.on('getListOfMiningPools', function() {
+        console.log('console.log.getListOfMiningPools');
+        miningPoolDataService.getListOfMiningPools();
     });
 
 };
