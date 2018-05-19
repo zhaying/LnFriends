@@ -1,4 +1,4 @@
-//Load custom Services 
+//Load custom Services
 var coinDataService       = require("../services/coinDataService.js"),
     rigDataService        = require("../services/rigDataService.js"),
     investorDataService   = require("../services/investorDataService.js"),
@@ -42,6 +42,7 @@ module.exports = function (socket) {
 
     });
 
+
     //investors
     socket.on('addingAnInvestor', function(data) {
         console.log('console.log.addingAnInvestor', data);
@@ -49,6 +50,16 @@ module.exports = function (socket) {
     });
     socket.on('getListOfInvestors', function() {
         console.log('console.log.getListOfInvestors');
+        investorDataService.getListOfInvestors();
+    });
+
+    //wallets
+    socket.on('addingWallet', function(data) {
+        console.log('console.log.addingWallet', data);
+        walletDataService.addInvestor(data);
+    });
+    socket.on('getListOfWallets', function() {
+        console.log('console.log.getListOfWallets');
         investorDataService.getListOfInvestors();
     });
 
