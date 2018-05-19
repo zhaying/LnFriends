@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	 <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
-		<title>MVC</title>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+		<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
+		<title>{{title}}</title>
 		<script src="https://code.jquery.com/jquery.js"></script>
-		<!-- <script src="/assets/js/script.js"></script> -->
 		<script src="https://hosted-sip.civic.com/js/civic.sip.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+		<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	</head>
 	<body>
 		<header id="masthead">
-		   <div class="container">
-		     <a href="/dashboard" id="logo">CoinLada</a>
-		     <nav>
-		       <a href="/dashboard">Dashboard</a>
-		       <a href="/admin">Admin Console</a>
-		       <a href="/login">Logout</a>
-		     </nav>
-		   </div>
-		 </header>
+			<div class="container">
+				<a href="/dashboard" id="logo">CoinLada</a>
+		    <nav>
+					<a href="/sa">SA</a>
+					<a href="/rigs">1. Rigs</a>
+					<a href="/investors">2. Investors</a>
+		      <a href="/wallets">3. Wallets</a>
+		      <a href="/miningPools">4. Mining Pools</a>
+		      <a href="/login">Logout</a>
+		    </nav>
+		  </div>
+		</header>
 		{{{ body }}}
-		<!-- script src="assets/js/script.js"></script -->
-		<script src="assets/js/data.js"></script>
-<	</body>
+	</body>
 </html>

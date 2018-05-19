@@ -1,13 +1,17 @@
 // configs/routes.js
 
 //Load Modules
-var civicService = require("../services/civicService.js");
-///Load CoinsService API Object
-var coinDataService = require("../services/coinDataService.js");
+var civicService  = require("../services/civicService.js");
+var request       = require('request');
+var rp            = require('request-promise');
+var db            = require('../models');
 
-var request = require('request');
-var rp = require('request-promise');
-
+//Load custom Services
+var coinDataService       = require("../services/coinDataService.js"),
+    rigDataService        = require("../services/rigDataService.js"),
+    investorDataService   = require("../services/investorDataService.js"),
+    walletDataService     = require("../services/walletDataService.js"),
+    miningPoolDataService = require("../services/miningPoolDataService.js");
 
 module.exports = function(app,passport) {
 
@@ -15,7 +19,7 @@ module.exports = function(app,passport) {
     // UI -- HOME PAGE (with login links)
     // =====================================
     app.get('/', function(req, res) {
-        res.render('login'); // load the index file
+        res.render('login', {message: 'flashLoginMessage', layout:'login' });
     });
 
 
@@ -28,7 +32,7 @@ module.exports = function(app,passport) {
         // render the page and pass in any flash data if it exists
         //var flashMessage = req.flash('loginMessage');
         var flashLoginMessage = "test";
-        res.render('login', { message: flashLoginMessage });
+        res.render('login', {message: 'flashLoginMessage', layout:'login' });
     });
 
 
@@ -40,9 +44,19 @@ module.exports = function(app,passport) {
     app.get('/dashboard', function(req, res) {
         res.render('dashboard'); // load the index file
     });
+    app.get('/rigs', function(req, res) {
+        res.render('rigs',{title:'CoinLada | Rigs', layout:'main'}); // load the index file
+    });
+    app.get('/wallets', function(req, res) {
+        res.render('wallets',{title:'CoinLada | Wallets', layout:'main'}); // load the index file
+    });
 
-    app.get('/admin', function(req, res) {
-        res.render('admin'); // load the index file
+    app.get('/investors', function(req, res) {
+        res.render('investors',{title:'CoinLada | Investors', layout:'main'}); // load the index file
+    });
+
+    app.get('/miningPools', function(req, res) {
+        res.render('miningPools',{title:'CoinLada | MiningPools', layout:'main'}); // load the index file
     });
 
     app.get('/sa', function(req, res) {
@@ -68,6 +82,29 @@ module.exports = function(app,passport) {
         res.send({redirect: '/dashboard'});
 
     });
+
+    // =====================================
+    // API -- GET THE CURRENCIES
+    // =====================================
+    app.post('/api/get_the_currencies', function(req, res) {
+
+        coinDataService.getTheCurrencies(req,res);
+
+    }); //end get_the_currencies
+    // =====================================
+    // API -- DATATABLES JSONP ROUTES
+    // =====================================
+    app.get('/api/getRigList/', function(req, res) {
+
+         rigDataService.apiGetRigs(req,res);
+    }); //end get api getRigList
+
+    app.get('/api/getInvestorList/', function(req, res) {
+          console.log("In getInvestorList");
+         investorDataService.apiGetInvestors(req,res);
+    }); //end get api getInvestorList
+
+
 
     // =====================================
     // API -- COIN DATA
@@ -107,8 +144,8 @@ module.exports = function(app,passport) {
     //////JP----* TheBSODPool *****
     app.get('/api/cointotal', function(req, res) {
         var totalSymbol = "SPD";
-        var totalnUrl = "http://api.bsod.pw/api/walletEx?address=STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW" +totalSymbol;
-        //console.log(coinUrl);
+        var totalnUrl = "http://api.bsod.pw/api/walletEx?address=" + wallet + "STLmMKJSH7GLGhxcY6tj52VRfaJk4ppHSW";
+        //console.log(coinUrl);""
         // var mydata = request(coinUrl);
         // var price = {"thedata": mydata };
         rp(totalUrl)
@@ -134,7 +171,27 @@ module.exports = function(app,passport) {
       coinTotal.getData(req,res);
 
     });
+    // =====================================
+    // DB -- CRUD
+    // =====================================
+    app.get('/api/currencies/', function(req,res){
+      db.currencies.findAll({}).then( function(result) {
+        console.log(result);
+        res.json(result);
+      });
 
+    });
+    app.post('/api/currencies/new/', function(req, res){
+      db.currencies.create({
+        currencies_id: '2616',
+        name:"Stipend",
+        symbol: 'SPD',
+      }).then(function(result){
+        console.log(result);
+        res.json(result);
+      });
+
+    });
     // =====================================
     // MISC -- OTHER STUFF
     // =====================================

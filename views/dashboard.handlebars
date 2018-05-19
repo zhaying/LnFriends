@@ -1,37 +1,5 @@
 <!-- views/dashboard -->
-<!doctype html>
-<html>
-<head>
-	<title>LnFriends App</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link href="pricing.css" rel="stylesheet">
-	<link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
-</head>
 <body>
-
-	<div class="row">
-
-		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
-			<div class="well">
-				<h3><span class="fa fa-user"></span> Local</h3>
-
-					<p>
-						<strong>id</strong>: user._id<br>
-					</p>
-
-
-					${template}
-
-				<button id="btnTest" >TEST API Button</button>
-			</div>
-		</div>
-
-	</div>
-
-</div>
+{{myDashboardTable}}
 <script src="assets/js/dashboardScript.js"></script>
 </body>
-</html>

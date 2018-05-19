@@ -1,0 +1,38 @@
+<!--Views/adminConsole -->
+<!doctype html>
+<html>
+<head>
+    <title>LnFriends App</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
+     <!-- load fontawesome -->
+
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center enter_selection" id="mining_pool_form">
+        <br>
+          <label id="mining_pool_label" class="label"for="wallet">Mining Pool Name:</label>
+          <input type="text" id="wallet" class="input" name="name" placeholder="Enter Pool Name" required="required">
+        <br>
+          <label id="mining_pool_url_label" class="label"for="coin">Mining Pool API URL:</label>
+          <input type="text" id="coin" class="input" name="name" placeholder="Mining Pool API URL" required="required">
+        <br>
+        <br>
+          <button type="button" class="mining_pool_btn" name="button">Add To Mining Pool</button>
+        <br>
+        <br>
+       </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        {{>myMiningPoolTable}}
+    </div>
+</div>
+</body>
+</html>
