@@ -2,6 +2,7 @@
 
 //Load Modules
 var civicService  = require("../services/civicService.js");
+var checkAuth     = require("../middleware/check-auth.js");
 var request       = require('request');
 var rp            = require('request-promise');
 var db            = require('../models');
@@ -41,25 +42,25 @@ module.exports = function(app,passport) {
     // UI -- DASHBOARDS
     // =====================================
 
-    app.get('/dashboard', function(req, res) {
+    app.get('/dashboard', checkAuth, function(req, res) {
         res.render('dashboard'); // load the index file
     });
-    app.get('/rigs', function(req, res) {
+    app.get('/rigs', checkAuth, function(req, res) {
         res.render('rigs',{title:'CoinLada | Rigs', layout:'main'}); // load the index file
     });
-    app.get('/wallets', function(req, res) {
+    app.get('/wallets', checkAuth, function(req, res) {
         res.render('wallets',{title:'CoinLada | Wallets', layout:'main'}); // load the index file
     });
 
-    app.get('/investors', function(req, res) {
+    app.get('/investors', checkAuth, function(req, res) {
         res.render('investors',{title:'CoinLada | Investors', layout:'main'}); // load the index file
     });
 
-    app.get('/miningPools', function(req, res) {
+    app.get('/miningPools', checkAuth, function(req, res) {
         res.render('miningPools',{title:'CoinLada | MiningPools', layout:'main'}); // load the index file
     });
 
-    app.get('/sa', function(req, res) {
+    app.get('/sa', checkAuth, function(req, res) {
         res.render('sa', {title:'CoinLada | Dashboard', layout:'saMain'} ); // load the index file
     });
 
@@ -68,23 +69,27 @@ module.exports = function(app,passport) {
     // UI -- LOGOUT
     // =====================================
     app.get('/logout', function(req, res) {
+      req.session.destroy(function(){
+        console.log("user logged out.")
+      });
+      res.redirect('/login');
         //req.logout();
-        res.redirect('/login');
+        //res.redirect('/login');
     });
 
     // =====================================
     // PROCESS TOKEN =======================
     // =====================================
-    app.post('/api/civic', function(req, res) {
+    app.post('/api/civic', checkAuth, function(req, res) {
       var jwtToken = req.body.aToken;
       console.log("FILE:routes.js VAR:jwtToken FUN: app.post\n",jwtToken)
-      civicService.processToken(jwtToken);
+    //  civicService.processToken(jwtToken);
         res.send({redirect: '/dashboard'});
 
     });
 
     // =====================================
-    // API -- GET THE CURRENCIES 
+    // API -- GET THE CURRENCIES
     // =====================================
     app.post('/api/get_the_currencies', function(req, res) {
 
