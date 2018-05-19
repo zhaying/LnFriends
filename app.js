@@ -55,7 +55,7 @@ app.use(session({ // session secret
   saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+//app.use(passport.session()); // persistent login sessions
 
 // Import routes and give the server access to them.
 var routes = require("./configs/routes.js")(app,passport);
