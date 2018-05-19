@@ -104,6 +104,11 @@ module.exports = function(app,passport) {
          investorDataService.apiGetInvestors(req,res);
     }); //end get api getInvestorList
 
+    app.get('/api/getWalletList/', function(req, res) {
+          console.log("In getWalletList");
+         walletDataService.apiGetWallets(req,res);
+    }); //end get api getInvestorList
+
 
 
     // =====================================
