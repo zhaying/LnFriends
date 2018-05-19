@@ -23,11 +23,8 @@ module.exports = {
 				// Loop through data assigning values to new obj
 				for (var i in result) {
 					walletlist.data[i] = [
-						result[i].wallet_id,
-						result[i].wallet_name,
-						result[i].wallet_type,
-						result[i].wallet_cost,
-						result[i].wallet_operator,
+						result[i].wallet_address,
+						result[i].wallet_symbol,
 					]; //end walletlist.data
 				} // end for loop
 
@@ -41,33 +38,5 @@ module.exports = {
 
 		}); //end db.wallets.findAll
 	} // end apiGetWallets
-
-
-	//Get all Investors
-	// getInvestors: function () {
-	// 	db.investors.findAll({}).then( function(result) {
-	// 	var investorlist = {investors:{}};
-	// 	//	var riglist = {rigs: {} };
-	// 	for (var i in result) {
-	// 		var key =  "investor" + result[i].id;
-	// 		investorlist.investors[key] = {
-	// 			"investor_id": result[i].investor_id,
-	// 			"investor_name": result[i].investor_name,
-	// 			"investor_type":	 result[i].investor_type,
-	// 			"investor_cost":	 result[i].investor_cost,
-	// 			"investor_operator":	 result[i].investor_operator,
-	// 		}; //end investorlist.investors[key]
-	//
-	// 	//console.log("console.log.investorlist:",investorlist);
-	//
-	// 	} // end for loop
-	//
-	// 	//Testing
-	// 	console.log("console.log.list",investorlist);
-	//
-	// 	// Send the data over websockets
-	// 	socketMVC.emit('investorDataServiceResponse',investorlist);
-	// 	});
-	// } // end getInvestors
 
 };// end Module Exports
